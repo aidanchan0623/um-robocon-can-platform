@@ -10,7 +10,7 @@ foreach ($relative in $tracked) {
         $issues += "Unwanted generated/private artifact: $relative"
     }
     if ((Get-Item -LiteralPath $path).Length -gt 50MB) { $issues += "Large file: $relative" }
-    if ($relative -match '\.(png|jpg|jpeg)$') { continue }
+    if ($relative -match '\.(png|jpg|jpeg|mp4)$') { continue }
     $content = Get-Content -LiteralPath $path -Raw
     if ($content -match '[A-Za-z]:[/\\]Users[/\\]|(?<!\d)\d{24}(?!\d)|gh[pousr]_[A-Za-z0-9]{20,}|github[_]pat[_]|BEGIN (RSA |OPENSSH )?PRIVATE KEY') {
         $issues += "Private identifier/credential pattern: $relative"

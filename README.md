@@ -6,6 +6,10 @@ The most useful lesson was not a software fix: intermittent solder contact at th
 
 **Status:** private portfolio draft. STM32-to-STM32 CAN and two unloaded BLDC motors have been demonstrated. Four-wheel locomotion, loaded performance, endurance and EMC have **not** been validated.
 
+<img src="hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Unpopulated CANDrive v1 PCB held in hand" width="600">
+
+*The team's CANDrive v1 bare PCB before component assembly.*
+
 ## Design
 
 The board combines a TCAN3413 CAN transceiver with an onboard STM32G431RBT6 and connections intended for PWM and encoders. An external-MCU CAN header lets a Nucleo use the transceiver while the onboard MCU is absent or electrically isolated.
@@ -72,11 +76,20 @@ Motor firmware starts disarmed. Key release requests **zero current and coast**,
 - The dual firmware reported 42 startup logic checks passed. These are **not** 42 independent physical motor experiments.
 - PWM/encoder operation, precision wheel control, four ESCs, bus stress testing and loaded locomotion remain unverified.
 
-See [verification and evidence](docs/verification.md). Demo videos and annotated measurement captures are pending selection; this draft does not invent missing evidence.
+See [verification and evidence](docs/verification.md) for the recorded checks and their limits.
+
+## Bench demonstration
+
+<a href="evidence/videos/bench-demo-supplied-2026-10-02.mp4"><img src="hardware/images/photos/dual-motor-bench.jpeg" alt="Two-motor bench setup with controllers, custom PCB and Nucleo" width="400"></a>
+
+*Two-motor bench arrangement. [Open/download the supplied demonstration video](evidence/videos/bench-demo-supplied-2026-10-02.mp4) (20.8 seconds).* The video shows the hardware and keyboard-control interface; it is not a decoded CAN capture or a calibrated performance measurement.
+
+The [media gallery](docs/media-gallery.md) includes the PCB and bench photographs, SWCLK/SWDIO debugging captures, and a clearly labelled earlier EasyEDA schematic. The SWD photographs are **not CAN waveforms**.
 
 ## To do
 
-- [ ] Add selected PCB/assembly photos, scope captures and demo videos.
+- [x] Add supplied bare-PCB and bench photos, SWD captures and demonstration video.
+- [ ] Add assembled-board close-ups, solder-joint repair photos and decoded CAN captures.
 - [ ] Record repeatable power-off continuity tests after solder rework.
 - [ ] Measure termination on the final mixed-ESC bus.
 - [ ] Validate PWM and encoder channels on the assembled PCB.

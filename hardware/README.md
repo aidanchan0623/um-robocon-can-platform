@@ -4,6 +4,8 @@ The `source` folder contains the team's EasyEDA Standard schematic and PCB JSON 
 
 The image in `images/can_routing.png` is a net-coloured audit reconstructed from that PCB export. It does not certify assembly, all copper clearances or manufacturing output.
 
+The [media gallery](../docs/media-gallery.md) includes the bare PCB and bench photos. Its earlier EasyEDA schematic is design history only: it shows a different MCU and CAN pin mapping, so use the September 27 source exports and the notes below for this documented revision.
+
 ## External CAN interface
 
 | EX_MCU_CAN pin | PCB net | Connection |

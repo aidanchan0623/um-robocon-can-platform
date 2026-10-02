@@ -21,8 +21,9 @@ Dates below are reconstructed from the CAN project discussion and the separate B
 - [dual-links-idle.txt](../evidence/dual-links-idle.txt): historical powered, disarmed check with both feedback links rising and reported `tec=0`, `bo=0`. Outputs are zero; this proves reception, not rotation.
 - [dual-motor-tuned.jsonl](../evidence/dual-motor-tuned.jsonl): historical keyboard/MCU feedback and separate ESC 2 USB snapshots during the tuned two-motor test. Serial counters, eRPM, state and timestamped samples are retained; private flash/probe identifiers are not included.
 - Firmware source and EasyEDA exports: current collected snapshots, not exact binary provenance for every earlier test.
+- [Media gallery](media-gallery.md): supplied bare-PCB and two-motor bench photographs, SWD debugging captures, a historical schematic image and a 20.8-second bench demonstration video. Supply dates do not establish recording dates or synchronisation with the telemetry logs.
 
-Raw PCB photos, selected videos, decoded CAN traces, and before/after annotated scope captures are pending. No oscilloscope photograph is presented here as proof of byte-perfect UART or CAN decoding.
+Decoded CAN traces and before/after annotated CAN solder-repair captures are pending. The included scope photographs are SWCLK/SWDIO, not proof of byte-perfect UART or CAN decoding.
 
 ## Results and interpretation
 
@@ -48,4 +49,4 @@ Aidan also observed roughly 1950–2050 eRPM after requesting 2000 eRPM in bench
 
 Five copied firmware snapshots are built offline using the supplied builder and STM32 GCC. Build results are recorded in [build-checks.md](../evidence/build-checks.md). No connected MCU, serial terminal, ESC configuration or motor operation is touched during this packaging work.
 
-Only the selected project files are included. Generated binaries, complete flash backups, private probe identifiers, personal screenshots, unrelated projects and per-motor calibration backups are excluded. Original source workspaces are preserved.
+Only the selected project files and team-supplied media are included. Generated firmware binaries, complete flash backups, private probe identifiers, unrelated project files and per-motor calibration backups are excluded. The demonstration video retains its original audio and includes the laptop control interface and background troubleshooting discussion; it is not a sanitised screen recording. Original source workspaces and supplied media are preserved.
