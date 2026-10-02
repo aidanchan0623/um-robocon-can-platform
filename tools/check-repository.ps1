@@ -1,4 +1,4 @@
-# Read-only checks of the Git-tracked draft. No hardware access.
+# Read-only checks of the Git-tracked repository. No hardware access.
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $tracked = @(& git -C $repoRoot ls-files)
@@ -28,8 +28,16 @@ foreach ($relative in $tracked) {
                 $issues += "Broken relative link in ${relative}: $target"
             }
         }
+        foreach ($match in [regex]::Matches($content,'(?:src|href)="([^"]+)"')) {
+            $target = $match.Groups[1].Value
+            if ($target -match '^(https?://|mailto:|#)') { continue }
+            $target = ($target -split '#',2)[0]
+            if (-not (Test-Path -LiteralPath (Join-Path (Split-Path -Parent $path) $target))) {
+                $issues += "Broken HTML media link in ${relative}: $target"
+            }
+        }
     }
 }
 if ($issues.Count) { $issues | ForEach-Object { Write-Host $_ }; throw 'Repository checks failed.' }
-Write-Host "PASS: $($tracked.Count) tracked files; relative Markdown links, JSON/JSONL, artifact exclusions and selected privacy patterns checked."
+Write-Host "PASS: $($tracked.Count) tracked files; relative Markdown/HTML links, JSON/JSONL, artifact exclusions and selected privacy patterns checked."
 Write-Host 'This is not an exhaustive secret scan or hardware test.'

@@ -1,6 +1,6 @@
 # Attribution and licensing
 
-This private draft has **no newly selected project-wide license**. Public release and licensing of the team's original board designs, application code and documentation require contributor agreement. Permission to include material in this draft should not be described as a completed open-source licensing decision.
+This public portfolio archive has **no newly selected project-wide license** for the team's original board designs, application code, documentation or media. Publication and a future open-source licensing decision are separate: no blanket license is added by this release. Any future project license should be agreed with the contributors and distinguish original material from third-party components.
 
 STM32Cube-generated files retain their original STMicroelectronics headers. Each firmware project vendors the HAL driver and the CMSIS headers used by its build. Preserve and consult the `LICENSE.txt` files within `Drivers`, the CMSIS device folder, and any individual source-file notices; these components retain their respective ST/BSD and Arm/Apache licensing terms rather than acquiring a new license from this repository.
 

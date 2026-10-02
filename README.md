@@ -4,11 +4,13 @@ An early custom control-board prototype for the **UM Robocon Team**, built to ex
 
 The most useful lesson was not a software fix: intermittent solder contact at the TCAN3413's CANH/CANL leads produced misleading resistance readings and inconsistent measurements. Tracing the signal path with a multimeter and oscilloscope led to the repair.
 
-**Status:** private portfolio draft. STM32-to-STM32 CAN and two unloaded BLDC motors have been demonstrated. Four-wheel locomotion, loaded performance, endurance and EMC have **not** been validated.
+**Status:** early prototype and public portfolio archive. STM32-to-STM32 CAN and two unloaded BLDC motors have been demonstrated. Four-wheel locomotion, loaded performance, endurance and EMC have **not** been validated. Additional automated software tests and independent CAN data verification are planned.
 
 <img src="hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Unpopulated CANDrive v1 PCB held in hand" width="600">
 
 *The team's CANDrive v1 bare PCB before component assembly.*
+
+Start with the [hardware notes](hardware/README.md), [build instructions](docs/build-and-use.md), [debugging case study](docs/debugging.md), or [media gallery](docs/media-gallery.md).
 
 ## Design
 
@@ -93,11 +95,12 @@ The [media gallery](docs/media-gallery.md) includes the PCB and bench photograph
 - [ ] Record repeatable power-off continuity tests after solder rework.
 - [ ] Measure termination on the final mixed-ESC bus.
 - [ ] Validate PWM and encoder channels on the assembled PCB.
+- [ ] Add host-side unit tests for packet encoding/decoding, command validation, timeouts and reversal logic, then automate them in CI.
 - [ ] Run frame-sequence, command/feedback and disconnect tests with a CAN analyser.
 - [ ] Test four independently addressed ESCs before claiming four-wheel operation.
 - [ ] Validate wheel encoders, loaded low-speed control, thermal behavior and power distribution.
 - [ ] Improve bus pairing/stubs and perform EMC review for the next board revision.
-- [ ] Agree on hardware/software licensing before making the repository public.
+- [ ] Agree on explicit hardware/software licenses with the contributors.
 
 ## Credits
 
@@ -111,4 +114,4 @@ AI assistance supported firmware development, documentation and troubleshooting 
 
 The clear hardware-project presentation in [bjpirt/shutter-tester](https://github.com/bjpirt/shutter-tester) inspired this repository's organisation; its code and prose were not copied.
 
-No project-wide redistribution license has been selected for this private draft. Existing third-party notices remain in place; see [third-party notices](THIRD_PARTY_NOTICES.md).
+No project-wide license has been selected for the team's original material; publication is not a claim that the whole project is open-source licensed. Existing third-party notices remain in place; see [attribution and licensing](THIRD_PARTY_NOTICES.md).

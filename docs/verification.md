@@ -50,3 +50,9 @@ Aidan also observed roughly 1950–2050 eRPM after requesting 2000 eRPM in bench
 Five copied firmware snapshots are built offline using the supplied builder and STM32 GCC. Build results are recorded in [build-checks.md](../evidence/build-checks.md). No connected MCU, serial terminal, ESC configuration or motor operation is touched during this packaging work.
 
 Only the selected project files and team-supplied media are included. Generated firmware binaries, complete flash backups, private probe identifiers, unrelated project files and per-motor calibration backups are excluded. The demonstration video retains its original audio and includes the laptop control interface and background troubleshooting discussion; it is not a sanitised screen recording. Original source workspaces and supplied media are preserved.
+
+## Future software testing
+
+Additional software testing is planned, not part of the current validation claim. The archived firmware's startup self-checks and successful offline builds do not replace a standalone automated test suite.
+
+Planned coverage includes packet byte order and lengths, command parsing and limits, stale-feedback/host timeouts, arming and reversal states, and malformed input. Host-side tests can exercise pure logic without powering motors; independent CAN captures and sequence tests are still needed to verify the physical link. CI integration will follow when those tests are added.
