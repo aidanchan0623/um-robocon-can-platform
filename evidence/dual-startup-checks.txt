@@ -1,0 +1,33 @@
+OK DISARMED
+OK ID
+T ms=63292 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=0 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=63401 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=2 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=63601 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=2 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: dual firmware running; 42 on-target control and CAN checks passed.
+ERR ARM NEED_BOTH_LINKS_AND_STOPPED_MOTORS
+T ms=63672 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=2 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=63801 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=4 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=64001 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=4 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: missing VESC feedback prevents pair arming.
+OK DISARMED
+ERR ID DISARM_FIRST UNIQUE_IDS_0_253
+T ms=64027 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=4 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=64201 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=6 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: duplicate IDs rejected; original IDs retained and both disarmed.
+ERR DRIVE DISARMED_OR_LINK_STALE
+T ms=64388 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=6 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=64404 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=8 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=64604 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=8 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: RPM request while disarmed rejected; both outputs remain zero.
+ERR UART DISARMED
+ERR COMMAND
+T ms=64805 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=10 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=65005 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=10 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: oversized serial command disarms and UART recovers.
+OK DISARMED
+OK ID
+OK SCAN
+T ms=65107 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=10 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=65206 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=12 fail=0 tec=0 bo=0 seen=255 test=42
+T ms=65406 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=12 fail=0 tec=0 bo=0 seen=255 test=42
+PASS: final state DISARMED, IDs 1 and 2; node scan completed.

@@ -1,0 +1,18 @@
+OK DISARMED
+OK ID
+T ms=239463 armed=0 id1=1 id2=2 link1=0 link2=0 age1=4294967295 age2=4294967295 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=0 rx2=0 tx=10518 fail=0 tec=0 bo=0 seen=1 test=42
+T ms=239554 armed=0 id1=1 id2=2 link1=1 link2=1 age1=0 age2=2 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=5 rx2=5 tx=10526 fail=0 tec=0 bo=0 seen=1 test=42
+T ms=239754 armed=0 id1=1 id2=2 link1=1 link2=1 age1=18 age2=2 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=14 rx2=15 tx=10546 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=239955 armed=0 id1=1 id2=2 link1=1 link2=1 age1=18 age2=2 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=24 rx2=25 tx=10566 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=240156 armed=0 id1=1 id2=2 link1=1 link2=1 age1=18 age2=4 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=34 rx2=35 tx=10586 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=240357 armed=0 id1=1 id2=2 link1=1 link2=1 age1=16 age2=4 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=44 rx2=45 tx=10606 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=240558 armed=0 id1=1 id2=2 link1=1 link2=1 age1=16 age2=4 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=54 rx2=55 tx=10626 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=240759 armed=0 id1=1 id2=2 link1=1 link2=1 age1=14 age2=6 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=64 rx2=65 tx=10646 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=240960 armed=0 id1=1 id2=2 link1=1 link2=1 age1=14 age2=6 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=74 rx2=75 tx=10666 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=241161 armed=0 id1=1 id2=2 link1=1 link2=1 age1=14 age2=8 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=84 rx2=85 tx=10686 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=241362 armed=0 id1=1 id2=2 link1=1 link2=1 age1=12 age2=8 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=94 rx2=95 tx=10706 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=241563 armed=0 id1=1 id2=2 link1=1 link2=1 age1=12 age2=8 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=104 rx2=105 tx=10726 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=241672 armed=0 id1=1 id2=2 link1=1 link2=1 age1=0 age2=18 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=110 rx2=110 tx=10736 fail=0 tec=0 bo=0 seen=1 test=42
+T ms=241763 armed=0 id1=1 id2=2 link1=1 link2=1 age1=10 age2=8 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=114 rx2=115 tx=10744 fail=0 tec=0 bo=0 seen=2 test=42
+T ms=241964 armed=0 id1=1 id2=2 link1=1 link2=1 age1=8 age2=10 erpm1=0 erpm2=0 request=0 out1=0 out2=0 rx1=124 rx2=125 tx=10764 fail=0 tec=0 bo=0 seen=1 test=42
+
