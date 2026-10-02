@@ -104,9 +104,9 @@ The [media gallery](docs/media-gallery.md) includes the PCB and bench photograph
 
 ## Credits
 
-**Aidan — UM Robocon Team:** CAN, PWM and encoder functionality and board requirements; most hardware diagnosis, manual measurements and debugging.
+**Aidan — UM Robocon Team:** CAN functionality and board requirements; most hardware diagnosis, manual measurements and debugging.
 
-**Rui Leong — UM Robocon Team:** STM32 section design.
+**Rui Leong — UM Robocon Team:** STM32 section design, PWM and encoder functionality.
 
 **Assembly and soldering:** shared between Aidan and Rui Leong.
 
