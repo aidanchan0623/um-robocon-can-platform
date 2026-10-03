@@ -1,4 +1,4 @@
-# Verification and limits
+# My tests and current limitations
 
 ## Historical milestones
 
@@ -10,7 +10,7 @@ Dates below are reconstructed from the CAN project discussion and the separate B
 | Late September | G431 USART3 tests and scope/adapter investigation | UART bring-up attempted; clean terminal decoding not established by the selected archive |
 | 27 September | G474 internal CAN loopback passed | Internal controller/configuration only |
 | 30 September | G474/F303 normal-mode CAN success reported in the project discussion | MCU-to-MCU bench demonstration; selected video pending |
-| Subsequent diagnosis | Aidan identified pressure-sensitive TCAN3413 CAN lead solder contact and reported success after rework | Physical assembly finding; does not resolve all separate SWD/UART issues |
+| Subsequent diagnosis | I traced pressure-sensitive TCAN3413 CAN lead solder contact and restored communication through rework | Physical assembly finding; does not resolve all separate SWD/UART issues |
 | 1 October | One BLDC controlled over CAN with keyboard requests | Single-controller unloaded bench demonstration |
 | 1 October | Replacement FS75100 ID 2 received alongside Mini ID 1 | Both feedback links approximately 50 Hz; see included telemetry |
 | 1 October | Two motors operated, with FS75100 startup tuning | Mixed-ESC unloaded bench demonstration, not locomotion |
@@ -27,15 +27,15 @@ Decoded CAN traces and before/after annotated CAN solder-repair captures are pen
 
 ## Results and interpretation
 
-The final dual setup used Mini 6.7 ID 1 and FS75100 ID 2. A second Mini had passed motor/Hall detection but was absent from CAN, including after cable swaps and an isolated check. Its fault mechanism was not established; it is not described as a working second Mini.
+I used Mini 6.7 ID 1 and FS75100 ID 2 for the final dual setup. A second Mini passed motor/Hall detection but did not appear on CAN, even after I swapped cables and checked it separately. Note: I have not established its fault mechanism; I replaced it for the successful dual test.
 
 Motor 2 had intermittent starts. Historical records describe changing its battery regeneration allowance from 0 to −0.5 A, then speed PID P/I from 0.004/0.004 to 0.01/0.008 while retaining +5/−2 A motor and +2 A battery discharge limits. Settings were read back after restart. These are specific bench settings, not reusable calibration for other motors or robot loads.
 
-The tuned log contains eight direction-request segments lasting at least 0.6 s that reached over 500 eRPM in the requested direction. Snapshot/sample timing limits timing conclusions: these are observed motor responses, **not measured CAN packet latency**. The recorded test ended disarmed with both motors stopped.
+The tuned log contains eight direction-request segments lasting at least 0.6 s that reached over 500 eRPM in the requested direction. Note: I used snapshots and sampled feedback to observe the motor responses. I still need independently timed CAN captures to measure packet latency. The recorded test ended disarmed with both motors stopped.
 
-Aidan also observed roughly 1950–2050 eRPM after requesting 2000 eRPM in bench use. That is reported electrical-speed feedback, not independently calibrated shaft-speed accuracy, loaded torque evidence, position accuracy or a settling-time specification.
+I observed roughly 1950–2050 eRPM after requesting 2000 eRPM on the bench. Note: I read that value from the controller’s electrical-speed feedback. I have not calibrated shaft-speed accuracy or measured loaded torque, position accuracy or settling time.
 
-## Not established
+## What I still need to validate
 
 - Precise payload verification through an independent CAN analyser or sequence-number stress test.
 - Continuous reliability, bit-error rate, worst-case latency, EMC or fault-injection coverage.
@@ -51,8 +51,8 @@ Five copied firmware snapshots are built offline using the supplied builder and 
 
 Only the selected project files and team-supplied media are included. Generated firmware binaries, complete flash backups, private probe identifiers, unrelated project files and per-motor calibration backups are excluded. The demonstration video retains its original audio and includes the laptop control interface and background troubleshooting discussion; it is not a sanitised screen recording. Original source workspaces and supplied media are preserved.
 
-## Future software testing
+## My next software tests
 
-Additional software testing is planned, not part of the current validation claim. The archived firmware's startup self-checks and successful offline builds do not replace a standalone automated test suite.
+I plan to add a standalone automated test suite. My current evidence includes startup self-checks and successful offline builds, which cover a narrower scope.
 
 Planned coverage includes packet byte order and lengths, command parsing and limits, stale-feedback/host timeouts, arming and reversal states, and malformed input. Host-side tests can exercise pure logic without powering motors; independent CAN captures and sequence tests are still needed to verify the physical link. CI integration will follow when those tests are added.

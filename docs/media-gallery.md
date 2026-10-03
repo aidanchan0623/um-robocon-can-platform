@@ -1,30 +1,30 @@
 # Prototype and debugging gallery
 
-These photographs and the video were supplied by Aidan on 2 October 2026. Original media bytes are retained under descriptive filenames. The supply date and WhatsApp filenames do not independently establish recording dates. Captions distinguish visible observations from the separate test records.
+I added these photographs and the video on 2 October 2026. Original media bytes are retained under descriptive filenames. The supply date and WhatsApp filenames do not independently establish recording dates. Captions distinguish visible observations from the separate test records.
 
 ## CANDrive v1 bare PCB
 
 <img src="../hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Bare CANDrive v1 PCB with labelled CAN, external MCU, PWM, encoder, UART and debug connections" width="650">
 
-The unpopulated board shows the physical prototype and its labelled interfaces. This is not an assembled-board photograph and does not show the repaired transceiver joints. Visible PWM and encoder connections indicate intended features, not verified operation.
+This photograph shows our bare CANDrive v1 PCB and its labelled interfaces. Note: I still need assembled-board and solder-repair close-ups. PWM and encoder connections are part of the design; I have not validated those channels yet.
 
 ## Two-motor bench
 
 <img src="../hardware/images/photos/dual-motor-bench.jpeg" alt="Bench arrangement with two motors, controllers, custom board, Nucleo and test wiring" width="480">
 
-The photograph records the bench arrangement, including motors, controllers, the custom board and a Nucleo. A still image cannot establish motion, correct wiring, safe power distribution or motor performance. Consult the [verification notes](verification.md) for the separately recorded controller identities and telemetry.
+I photographed the bench arrangement to show the motors, controllers, custom board and Nucleo. I document the controller identities and observed motor responses separately in my [test notes](verification.md).
 
 ### Demonstration video
 
 [Open/download the original bench video](../evidence/videos/bench-demo-supplied-2026-10-02.mp4) — approximately 20.8 seconds, 3.38 MB.
 
-The clip shows the motors and wiring, followed by the laptop's two-motor G474 keyboard-control interface. A motor label reading 6374 190KV is visible. It documents the demonstration setup, not an independent measurement of CAN payloads, packet latency, calibrated RPM, loaded torque or four-wheel locomotion. Background troubleshooting discussion is visible on the laptop; the clip should not be interpreted as a fault-free endurance run. It is not established to be synchronised with the included 1 October logs.
+I recorded the motors and wiring, followed by the laptop’s two-motor G474 keyboard-control interface. A 6374 190KV motor label is visible. Note: this is a short demonstration of the setup. I still need independent payload, latency, calibrated speed and loaded-torque measurements. I have not established that the clip matches the timing of the 1 October logs.
 
 The video is preserved with its original audio. Playback support varies by GitHub client; use the file's download option if inline playback is unavailable.
 
-## SWD debugging captures — not CAN
+## My SWD debugging captures
 
-The channel identities follow Aidan's identification in the original debugging discussion: **CH1/yellow is SWCLK; CH2/green is SWDIO**. Both channels display DC coupling, 10:1 attenuation and 1 V/div.
+In these captures, I probed the debug interface: **CH1/yellow is SWCLK; CH2/green is SWDIO**. Both channels display DC coupling, 10:1 attenuation and 1 V/div.
 
 <img src="../evidence/images/swd-clock-data-wide.jpeg" alt="SWCLK and SWDIO capture at 50 microseconds per division" width="750">
 
@@ -32,9 +32,9 @@ Wide view at **50 µs/div**. The scope displays CH1 maximum 3.05 V, CH1 minimum 
 
 <img src="../evidence/images/swd-clock-data-detail.jpeg" alt="SWCLK and SWDIO detail at 10 microseconds per division" width="750">
 
-Detail at **10 µs/div**. The displayed CH1 maximum is 3.01 V; minima are −250 mV for CH1 and −220 mV for CH2. Clock and data transitions are visible, but no SWD transaction is decoded here. Activity alone does not prove that the MCU returned a valid debug response or that its pins are undamaged. The negative minima alone do not establish a hardware damage mechanism; probing and undershoot need separate assessment.
+Detail at **10 µs/div**. My scope displays a CH1 maximum of 3.01 V, with minima of −250 mV on CH1 and −220 mV on CH2. Note: I captured clock and data transitions without decoding the SWD transactions. I still need to assess the probing and undershoot before drawing conclusions about MCU damage.
 
-These captures belong to the separate debug-interface investigation. They are not CANH/CANL measurements, UART decoding, or before/after proof of the TCAN3413 solder repair.
+Note: I took these captures during the separate debug-interface investigation. I still need CANH/CANL measurements and decoded UART/CAN records to document those signal paths.
 
 ## Earlier EasyEDA schematic — design history only
 
@@ -42,9 +42,9 @@ These captures belong to the separate debug-interface investigation. They are no
 
 This original export has a filename dated **4 September 2026**. It shows STM32G474RET6 with CAN on PB13/PB12, unlike the later STM32G431RBT6 revision documented in this repository. It is included to show design development, **not as the wiring reference for the current board**.
 
-Use the [27 September EasyEDA source exports](../hardware/source) and [hardware notes](../hardware/README.md) for the documented revision. The current [CAN routing audit](../hardware/images/can_routing.png) is reconstructed from that later PCB export; it is not an original EasyEDA screenshot or fabrication output.
+Use the [27 September EasyEDA source exports](../hardware/source) and [hardware notes](../hardware/README.md) for the documented revision. I reconstructed the [CAN signal-path diagram](../hardware/images/can_routing.png) from that later PCB export to explain the connections; I use the original exports for fabrication.
 
-## Still needed
+## Photos and measurements I plan to add
 
 - Close-ups of the assembled PCB and the repaired TCAN3413 lead-to-pad joints.
 - Annotated, repeatable CANH/CANL measurements before and after repair.

@@ -12,7 +12,7 @@ The investigation separated several questions that had initially been conflated:
 4. Did the transceiver connect to a properly terminated external bus?
 5. Did the other controller actually receive and reply?
 
-## Evidence and interpretation
+## What I observed
 
 | Observation | What it established | What it did not establish |
 | --- | --- | --- |
@@ -22,14 +22,14 @@ The investigation separated several questions that had initially been conflated:
 | Power LEDs and supply measurements | Some power was present at measured points | Every IC supply pin and ground connection was sound |
 | Bus resistance sometimes near 60 Ω | A termination path existed at that moment | Reliable lead-to-pad contact or correct waveforms |
 | Resistance varied with probe pressure, approximately 32 kΩ versus 60 Ω | An intermittent physical connection was strongly suspected | Which individual joint was faulty without tracing/rework |
-| Scope results were inconsistent; team identified poor TCAN3413 CAN lead contact | Physical investigation located the reported assembly fault | A complete quantitative signal-integrity qualification |
-| CAN worked after solder rework | User-reported repair outcome supported the diagnosis | All prior UART/SWD faults had the same cause |
+| Scope results were inconsistent; I traced poor TCAN3413 CAN lead contact | I located the assembly fault through probing and rework | A complete quantitative signal-integrity qualification |
+| CAN worked after solder rework | Communication resumed after my solder rework | All prior UART/SWD faults had the same cause |
 
-These observations are reconstructed from the project discussion, firmware/test records and Aidan's final diagnosis. The exact joint repaired first and annotated before/after scope captures are not yet included. The two resistance numbers are user-reported measurements, not new measurements made for this repository.
+I reconstructed this sequence from my debugging notes, project discussion and firmware/test records. Note: I have not included annotated before/after captures or recorded which joint I repaired first. The resistance values are my original bench observations; I did not repeat those measurements while preparing this page.
 
 ## Root cause
 
-The TCAN3413 CANH/CANL leads were not reliably soldered to their respective pads. Probe pressure sometimes changed the apparent continuity. Aidan reports that after repairing these contacts, the CAN setup worked.
+The TCAN3413 CANH/CANL leads were not reliably soldered to their respective pads. Probe pressure sometimes changed the apparent continuity. After I repaired these contacts, the CAN setup worked.
 
 **CANH and CANL must not be soldered together.** The failure was inadequate lead-to-pad contact, not a missing H-to-L solder bridge.
 
@@ -47,4 +47,4 @@ A DMM reports an average of a switching signal; it cannot prove a UART/CAN bit s
 - Keep hardware, software and measurement-setting changes separate and record each result.
 - Preserve annotated captures and decoded frames, not just a photograph showing activity.
 
-The separate G431 UART and intermittent SWD programming difficulties remain separate investigations. This CAN repair does not prove whether any MCU was damaged or explain every fault in the project's history.
+Note: I am investigating the G431 UART and intermittent SWD programming difficulties separately. The CAN repair resolved the transceiver connection, but I have not established whether an MCU was damaged or whether these other faults share a cause.
