@@ -2,7 +2,7 @@
 
 The `source` folder contains the team's EasyEDA Standard schematic and PCB JSON exports dated 27 September 2026. Open the corresponding JSON through EasyEDA's local-file import/open workflow. They are source-design snapshots, **not production Gerbers**. Re-run schematic checks, PCB DRC and manufacturing review before fabricating.
 
-The image in `images/can_routing.png` is a net-coloured audit reconstructed from that PCB export. It does not certify assembly, all copper clearances or manufacturing output.
+The image in `images/can_routing.png` is a net-coloured audit reconstructed from that PCB export. My [full PCB screenshot](images/candrive-full-pcb-easyeda.jpg) shows the same export opened in EasyEDA with copper pours hidden. I explain the local-controller/CAN-interface objectives and routing compromises in [PCB design decisions](../docs/pcb-design-decisions.md).
 
 The [media gallery](../docs/media-gallery.md) includes the bare PCB and bench photos. Its earlier EasyEDA schematic is design history only: it shows a different MCU and CAN pin mapping, so use the September 27 source exports and the notes below for this documented revision.
 
@@ -32,8 +32,8 @@ Only the two physical cable ends should be terminated. If the custom board is a 
 
 The UART header names use the adapter's perspective: header pin 2 (labelled RX / CP2102_RX) carries MCU PC10 TX through R3; header pin 1 (labelled TX / CP2102_TX) feeds MCU PC11 RX through R2. Pin 3 is GND. Confirm numbering and continuity on the physical board before wiring. Use a 3.3 V logic UART adapter, not RS-232 or an unverified 5 V TX output. For transmit-only scope/terminal tests, MCU RX can remain disconnected.
 
-## Review limits
+## My validation limits
 
-The CAN net/pin mapping and inspected routing support the intended external-controller path. That is not enough to say the entire design is fault-free: assembled contacts, uninspected fabrication details, EMC, fault tolerance, PWM and encoder operation require further validation. The poor CAN lead solder contact was established by the team's physical investigation, not by CAD alone.
+I checked the CAN net/pin mapping and demonstrated the external-controller path on the bench. Note: I still need to validate the onboard MCU path, PWM and encoder operation, EMC and loaded motor control. I have not measured controlled differential impedance or the signal-integrity effect of the remaining routing compromises. I established the CAN lead solder-contact fault through physical probing and rework.
 
-Design references: [TI TCAN3413 datasheet](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) and [Nexperia PESD2CANFD27V-T datasheet](https://assets.nexperia.com/documents/data-sheet/PESD2CANFD27V-T.pdf). The team reports consulting the CMC's own datasheet as well; the choke was omitted in the bench arrangement documented here.
+Design references: [TI TCAN3413 datasheet](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) and [Nexperia PESD2CANFD27V-T datasheet](https://assets.nexperia.com/documents/data-sheet/PESD2CANFD27V-T.pdf). I also consulted the CMC's datasheet during placement. I omitted the choke in the documented bench arrangement, so I still need to evaluate it separately.

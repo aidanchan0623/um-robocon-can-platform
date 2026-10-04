@@ -1,6 +1,6 @@
 # UM Robocon CAN Platform
 
-An early custom control-board prototype for the **UM Robocon Team**, built to explore communication between STM32 controllers and a transition toward BLDC locomotion. This repository brings together the CAN board design, MCU-to-MCU tests, one- and two-motor VESC firmware, and the hardware debugging that made the bench setup work.
+An early custom control-board prototype for the **UM Robocon Team**, combining two functions: an onboard MCU for local motor control through PWM/encoder interfaces, and a CAN transceiver for communication between controller nodes. I wanted this combination to support distributed robot control and open a path toward CAN-controlled BLDC drivers. This repository brings together the design, MCU-to-MCU tests, one- and two-motor VESC firmware, and my hardware debugging.
 
 My most useful debugging lesson came from intermittent solder contact at the TCAN3413’s CANH/CANL leads. I traced the signal path with a multimeter and oscilloscope; reworking the lead-to-pad joints restored communication.
 
@@ -14,7 +14,12 @@ Start with the [hardware notes](hardware/README.md), [build instructions](docs/b
 
 ## Design
 
-The board combines a TCAN3413 CAN transceiver with an onboard STM32G431RBT6 and connections intended for PWM and encoders. An external-MCU CAN header lets a Nucleo use the transceiver while the onboard MCU is absent or electrically isolated.
+The board has two complementary parts:
+
+- **Local motor control:** the STM32G431RBT6 is intended to run control logic, command an external motor driver through PWM and read encoder feedback.
+- **Communication between nodes:** the TCAN3413 connects the MCU's CAN controller to CANH/CANL, so controller nodes can exchange commands and feedback. Each node needs a suitable CAN interface and compatible bus settings. CAN1 and CAN2 are connections to the same bus.
+
+The motor power stage is external. Our BLDC bench work uses VESC-compatible ESCs. An external-MCU CAN header lets a Nucleo use the transceiver while the onboard MCU is absent or electrically isolated, which helped me test the network separately from the local controller.
 
 The tests use **Classic CAN at 250 kbit/s**. The first application exchanges a ping and reply between a NUCLEO-G474RE and NUCLEO-F303RE. Later applications use VESC extended-ID packets to control BLDC motors and receive electrical-RPM feedback.
 
@@ -31,6 +36,22 @@ All nodes need a common signal-ground reference. MCU TX connects to transceiver 
 <img src="hardware/images/can_routing.png" alt="CAN signal-path diagram reconstructed from the September 27 PCB export" width="520">
 
 *I reconstructed this signal-path diagram from the PCB export to explain the routing. I use the original exports as the fabrication reference.* See [hardware notes](hardware/README.md) and the original [EasyEDA exports](hardware/source).
+
+## PCB design and trade-offs
+
+<img src="hardware/images/candrive-full-pcb-easyeda.jpg" alt="Complete CANDrive v1 PCB opened in EasyEDA, showing MCU, CAN bus interface and motor I/O placement" width="850">
+
+*Actual EasyEDA view of our September 27 PCB export. I hid copper pours for trace visibility.*
+
+Keeping CANH and CANL together was one of my main design challenges. I had to balance similar path lengths and fewer layer changes against component placement and access to the connectors.
+
+- I kept both CAN headers in the same orientation and pin order to reduce wiring confusion, accepting a less direct routing path as the trade-off.
+- I iterated the CMC placement and brought its bypass resistors closer to the pads, reducing detours and long branches.
+- I placed the TVS near the bus connections and worked on its ground path. The optional CMC adds a filtering option, although my bench setup used separate CANH/CANL bypass resistors.
+
+**Note:** I have not measured the effect of the remaining length mismatch or vias, or verified controlled differential impedance and EMC. The communication fault I traced came from the solder contacts at the transceiver leads.
+
+Read my [board purpose and PCB design decisions](docs/pcb-design-decisions.md) for the placement iterations, routing compromises and next tests.
 
 ## Key hardware
 

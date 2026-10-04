@@ -2,6 +2,12 @@
 
 I added these photographs and the video on 2 October 2026. Original media bytes are retained under descriptive filenames. The supply date and WhatsApp filenames do not independently establish recording dates. Captions distinguish visible observations from the separate test records.
 
+## Complete PCB layout
+
+![Whole CANDrive v1 PCB in EasyEDA](../hardware/images/candrive-full-pcb-easyeda.jpg)
+
+*Actual EasyEDA capture of the September 27 PCB export, with copper pours hidden for trace visibility. I explain the board's two functions and the header, routing, TVS and CMC trade-offs in [PCB design decisions](pcb-design-decisions.md).*
+
 ## CANDrive v1 bare PCB
 
 <img src="../hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Bare CANDrive v1 PCB with labelled CAN, external MCU, PWM, encoder, UART and debug connections" width="650">
