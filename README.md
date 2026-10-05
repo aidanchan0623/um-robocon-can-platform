@@ -1,10 +1,10 @@
 # UM Robocon CAN Platform
 
-An early custom control-board prototype for the **UM Robocon Team**, combining two functions: an onboard MCU for local motor control through PWM/encoder interfaces, and a CAN transceiver for communication between controller nodes. I wanted this combination to support distributed robot control and open a path toward CAN-controlled BLDC drivers. This repository brings together the design, MCU-to-MCU tests, one- and two-motor VESC firmware, and my hardware debugging.
+An early **UM Robocon Team** control-board prototype combining an onboard MCU with PWM/encoder interfaces and CAN communication between nodes. This repository collects the design, external-controller CAN tests, one-/two-motor VESC firmware and hardware debugging toward distributed BLDC robot control.
 
-My most useful debugging lesson came from intermittent solder contact at the TCAN3413’s CANH/CANL leads. I traced the signal path with a multimeter and oscilloscope; reworking the lead-to-pad joints restored communication.
+Two separate solder faults shaped our bring-up process: intermittent TCAN3413 CAN lead contact, and an inadequately soldered G431 SWDIO lead. I traced the paths with a multimeter and oscilloscope; the [case studies and assembly checklist](docs/debugging.md) distinguish measured results from reported recovery.
 
-**Note on my current testing:** I have demonstrated STM32-to-STM32 Classic CAN and control of two unloaded BLDC motors. My tests do not yet cover four-wheel locomotion, loaded performance, endurance or EMC. I plan to add independent CAN captures and automated firmware tests before extending those claims.
+**Test scope:** external Nucleos validated the custom transceiver path at 1 Mbit/s; **the onboard G431 was not the CAN controller under test**. Two unloaded BLDCs were demonstrated separately at 250 kbit/s. Onboard CAN/PWM/encoder operation, four-wheel locomotion, loaded performance and EMC remain unvalidated.
 
 <img src="hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Unpopulated CANDrive v1 PCB held in hand" width="600">
 
@@ -21,7 +21,7 @@ The board has two complementary parts:
 
 The motor power stage is external. Our BLDC bench work uses VESC-compatible ESCs. An external-MCU CAN header lets a Nucleo use the transceiver while the onboard MCU is absent or electrically isolated, which helped me test the network separately from the local controller.
 
-The tests use **Classic CAN at 250 kbit/s**. The first application exchanges a ping and reply between a NUCLEO-G474RE and NUCLEO-F303RE. Later applications use VESC extended-ID packets to control BLDC motors and receive electrical-RPM feedback.
+Original ping/reply and VESC demonstrations use **250 kbit/s**. The separate **1 Mbit/s** diagnostic uses eight-byte requests/echoes on IDs `0x601`/`0x602`; it is not motor-control firmware. [Firmware provenance](docs/firmware-provenance.md) maps each snapshot to code and available image identities; release [v0.2.0-bench-validation](https://github.com/aidanchan0623/um-robocon-can-platform/releases/tag/v0.2.0-bench-validation) freezes the evidence.
 
 ```text
 MCU-to-MCU test:
@@ -70,9 +70,9 @@ I list the main hardware here; the source exports contain the detailed values an
 
 ## Assembly and debugging
 
-The CAN failures were investigated in stages: power and continuity, firmware execution, internal loopback, external TX/RX, bus termination, and oscilloscope measurements. I measured the unpowered CANH–CANL resistance changing from approximately **32 kΩ to 60 Ω depending on probe pressure**. Reworking the transceiver lead-to-pad joints restored operation.
+I traced power, continuity, firmware, loopback, external signals and termination. Unpowered CANH–CANL resistance varied from approximately **32 kΩ to 60 Ω with probe pressure**; transceiver lead-to-pad rework restored communication.
 
-This was poor contact between each CAN lead and its own pad—not a short joining CANH to CANL. Read the [debugging case study](docs/debugging.md) for the evidence, limitations and lessons. I am treating the UART/SWD difficulties as separate investigations; I have not established the same cause for them.
+This was poor contact between each CAN lead and its own pad, not a short joining CANH to CANL. The separate G431 SWDIO repair has reported flash success; its verify log, UART capture, joint photo and measured continuity remain pending. Follow the [assembly checklist](docs/assembly-checklist.md) before bring-up.
 
 ## Usage
 
@@ -83,6 +83,7 @@ Choose one firmware application at a time. Building does not flash the MCU, and 
 | [g431-uart](firmware/g431-uart) | Custom STM32G431RBT6 | Repeated USART3 output on PC10 at 9600 baud |
 | [g474-can-ping](firmware/g474-can-ping) | NUCLEO-G474RE | Standard-ID `0x123` ping every 500 ms |
 | [f303-can-reply](firmware/f303-can-reply) | NUCLEO-F303RE | Reply on standard ID `0x124` |
+| [CAN1M diagnostic overlays](evidence/can-1mbit-2026-10-05/REPRODUCTION.md) | G474 + F303 | 1 Mbit/s, IDs `0x601`/`0x602`, eight-byte integrity test |
 | [g474-vesc-single](firmware/g474-vesc-single) | NUCLEO-G474RE | One VESC, keyboard bench control |
 | [g474-vesc-dual](firmware/g474-vesc-dual) | NUCLEO-G474RE | Two VESCs, shared speed request and feedback checks |
 
@@ -92,20 +93,20 @@ Motor firmware starts disarmed. Key release requests **zero current and coast**,
 
 ## What I tested and what comes next
 
-- The G474 internal loopback test passed; this tested the controller internally, not the external pins or transceiver.
-- G474–F303 CAN operation was demonstrated after hardware troubleshooting.
-- One motor and then two motors were controlled using keyboard requests through the G474.
-- The final dual setup reported fresh feedback from both ESC IDs at approximately 50 Hz, with zero reported transmit errors in the recorded bench checks.
-- I recorded 42 passing startup logic checks in the dual firmware. Note: these exercise software logic; I count the physical motor tests separately.
-- My next tests cover PWM/encoder operation, precision wheel control, four ESCs, bus stress and loaded locomotion.
+| Check | Recorded result | Scope |
+| --- | --- | --- |
+| 1 Mbit/s integrity + endurance | **5,330,951 eight-byte pairs**, 16 stages including a 30-minute soak; zero recorded run integrity/controller faults | External Nucleo/transceiver path; [raw evidence](evidence/README.md) |
+| Soak throughput / round trip | About **2,327 pairs/s**; **1.724 ms** max application RTT; **1,804 pacing misses** | Scheduling misses, not lost frames; derived bus load about **52–63%** |
+| Two-BLDC demonstration | Direction/speed requests, approximately 50 Hz feedback; 42 startup logic checks | Separate unloaded 250 kbit/s motor test |
+| G431 SWDIO recovery | Flash success reported after solder repair | Verify/UART/photo/continuity evidence pending |
 
-See [verification and evidence](docs/verification.md) for the recorded checks and their limits.
+See [verification](docs/verification.md) for methods, internal-oscillator risk and limits. CAN waveforms, onboard MCU functions, noisy multi-node testing and loaded locomotion remain future work.
 
 ## Bench demonstration
 
 <a href="evidence/videos/bench-demo-supplied-2026-10-02.mp4"><img src="hardware/images/photos/dual-motor-bench.jpeg" alt="Two-motor bench setup with controllers, custom PCB and Nucleo" width="400"></a>
 
-*Two-motor bench arrangement. [Open/download the supplied demonstration video](evidence/videos/bench-demo-supplied-2026-10-02.mp4) (20.8 seconds).* I included the video to show the hardware and keyboard-control workflow. I still need decoded CAN captures and calibrated measurements to assess performance.
+*Two-motor bench arrangement. [Open/download the demonstration video](evidence/videos/bench-demo-supplied-2026-10-02.mp4) (20.8 seconds).* This shows the workflow; calibrated motor measurements remain pending.
 
 The [media gallery](docs/media-gallery.md) includes the PCB and bench photographs, SWCLK/SWDIO debugging captures, and a clearly labelled earlier EasyEDA schematic. Note: my scope photographs show **SWCLK/SWDIO** during the debug-interface investigation. I have not included CANH/CANL captures yet.
 
