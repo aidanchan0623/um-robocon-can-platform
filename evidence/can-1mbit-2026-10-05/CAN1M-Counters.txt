@@ -1,0 +1,24 @@
+CAN 1 Mbit/s - independently reconciled final counters
+Stage: 2500 requested pairs/s | 2,324.53 observed pairs/s
+Run started: 5/10/2026 12:09:30 PM
+Run ended:   5/10/2026 12:16:43 PM
+
+G474 queued / TX / valid echoes: 1,002,308 / 1,002,308 / 1,002,308
+F303 RX / queued / TX:          1,002,308 / 1,002,308 / 1,002,308
+Pending software replies: G474=0, F303=0
+
+Counter                               G474       F303
+Wrong bytes / invalid frame           0          0
+Unexpected sequence                   0          n/a
+Reply timeout                         0          n/a
+Queue failure / overflow              0          0
+RX FIFO loss / overrun                0          0
+Observed protocol errors              0          0
+Bus-off events / observed flag        0          0
+Observed maximum TEC                  0          0
+Observed maximum REC                  0          0
+
+Max application round trip: 1718 us (includes software/queues)
+G474 missed pacing intervals: 433; UART diagnostic errors: 0
+Pacing misses are not missing CAN frames; use measured rate.
+State: PAUSED | All totals match: True | Verdict: PASS

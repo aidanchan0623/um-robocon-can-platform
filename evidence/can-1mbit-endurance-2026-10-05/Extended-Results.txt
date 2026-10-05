@@ -1,0 +1,27 @@
+CAN 1 Mbit/s - extended bench-test results
+UM Robocon | 5 October 2026 | G474 <-> F303
+
+PASS: all 12 functionality stages + 30-minute high-load soak
+Classic CAN | IDs 0x601 / 0x602 | 8-byte sequence and patterns
+External transceiver boards and physical CAN link; not loopback
+
+30-minute soak verified pairs: 4,188,005
+All extended stages total:    4,297,555 pairs / 8,595,110 CAN frames
+Measured soak rate:           2,326.62 pairs/s (2500 requested)
+Soak duration:                1,800.024 seconds
+Max application round trip:   1724 us (includes software)
+
+G474 queued / completed / byte-validated replies:
+4,188,005 / 4,188,005 / 4,188,005
+Independent F303 received / queued / completed:
+4,188,005 / 4,188,005 / 4,188,005
+
+Wrong bytes / sequence / timeouts / queue / FIFO errors: ZERO
+Recorded CAN protocol errors / bus-off / max TEC / REC: ZERO
+4 G474 software resets; 13 F303 software resets; idle holds PASS
+Final state: PAUSED | pending=0 | runner finished
+
+Soak pacing misses: 1804; scheduling misses, NOT lost CAN frames.
+Limits: two-node bench only; no motors, EMI, cold power or EMC.
+Report generated from raw serial/SWD records; not a bus trace.
+Zero observed errors does not guarantee zero error probability.

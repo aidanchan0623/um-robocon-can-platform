@@ -1,0 +1,28 @@
+      -------------------------------------------------------------------
+                       STM32CubeProgrammer v2.23.0                  
+      -------------------------------------------------------------------
+
+ST-LINK FW  : V2J33M25
+Board       : NUCLEO-F303RE 
+Voltage     : 3.25V
+SWD freq    : 950 KHz
+Connect mode: Hot Plug
+Reset mode  : Software reset
+Device ID   : 0x446
+Revision ID : Rev Y
+Device name : STM32F302xE/F303xE/F398xx
+NVM size    : 512 KBytes
+Device type : MCU
+Device CPU  : Cortex-M4
+BL Version  : 0x40
+
+
+Reading 32-bit memory content
+  Size          : 76 Bytes
+  Address:      : 0x20000250
+0x20000250 : 43414E32 00000001 0001C544 00000000
+0x20000260 : 00000000 00000000 00000000 00000000
+0x20000270 : 00000000 00000000 00000000 00000000
+0x20000280 : 00000000 00000000 00000000 00000000
+0x20000290 : 00000000 00000000 00000000
+

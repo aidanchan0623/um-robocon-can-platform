@@ -1,0 +1,23 @@
+CAN 1 Mbit/s - application integrity bench validation
+UM Robocon CAN platform | 5 October 2026 | Aidan and Rui Leong
+
+RESULT: ALL THREE STAGES PASSED
+NUCLEO-G474RE -> custom CAN boards -> NUCLEO-F303RE -> echo
+Classic CAN | standard IDs 0x601 / 0x602 | 8 bytes | 1 Mbit/s
+Both controllers: 75% sample point, normal mode, auto retry
+
+Requested   Observed    Verified pairs   Seconds   Result
+pairs/s     pairs/s
+100         99.78       1,502            15.0      PASS
+1000        984.35      29,586           30.0      PASS
+2500        2,324.53    1,002,308        431.2     PASS
+
+TOTAL VERIFIED: 1,033,396 request/echo pairs (2,066,792 CAN frames)
+Each reply checked byte-for-byte and against a pending sequence.
+After pause/drain: queued = transmitted = echoed on G474,
+and independently matches F303 received/transmitted totals.
+
+Evidence: timestamped serial logs, CSV, JSON and F303 SWD reads.
+This screenshot is a report of those logs, not a bus waveform.
+Limit: two-node bench result; not motor-noise, temperature or
+four-ESC qualification. Zero observed errors is not a guarantee.

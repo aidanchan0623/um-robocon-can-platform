@@ -1,0 +1,33 @@
+12:42:55  Bounded lunch suite started. IDs 0x601/0x602 only; no motors, no firmware writes.
+12:42:57  G474 software reset cycle-1: booted paused; no reflash.
+12:42:57  Starting cycle-1-rate-100 (8 seconds at 100 requested pairs/s).
+12:43:11  PASS cycle-1-rate-100: 801 matched pairs; idle hold passed.
+12:43:11  Starting cycle-1-rate-1000 (8 seconds at 1000 requested pairs/s).
+12:43:25  PASS cycle-1-rate-1000: 7916 matched pairs; idle hold passed.
+12:43:25  Starting cycle-1-rate-2500 (8 seconds at 2500 requested pairs/s).
+12:43:39  PASS cycle-1-rate-2500: 18661 matched pairs; idle hold passed.
+12:43:40  G474 software reset cycle-2: booted paused; no reflash.
+12:43:40  Starting cycle-2-rate-100 (8 seconds at 100 requested pairs/s).
+12:43:55  PASS cycle-2-rate-100: 801 matched pairs; idle hold passed.
+12:43:55  Starting cycle-2-rate-1000 (8 seconds at 1000 requested pairs/s).
+12:44:09  PASS cycle-2-rate-1000: 7928 matched pairs; idle hold passed.
+12:44:09  Starting cycle-2-rate-2500 (8 seconds at 2500 requested pairs/s).
+12:44:22  PASS cycle-2-rate-2500: 18672 matched pairs; idle hold passed.
+12:44:24  G474 software reset cycle-3: booted paused; no reflash.
+12:44:24  Starting cycle-3-rate-100 (8 seconds at 100 requested pairs/s).
+12:44:38  PASS cycle-3-rate-100: 803 matched pairs; idle hold passed.
+12:44:38  Starting cycle-3-rate-1000 (8 seconds at 1000 requested pairs/s).
+12:44:52  PASS cycle-3-rate-1000: 7924 matched pairs; idle hold passed.
+12:44:52  Starting cycle-3-rate-2500 (8 seconds at 2500 requested pairs/s).
+12:45:06  PASS cycle-3-rate-2500: 18673 matched pairs; idle hold passed.
+12:45:08  G474 software reset cycle-4: booted paused; no reflash.
+12:45:08  Starting cycle-4-rate-100 (8 seconds at 100 requested pairs/s).
+12:45:22  PASS cycle-4-rate-100: 802 matched pairs; idle hold passed.
+12:45:22  Starting cycle-4-rate-1000 (8 seconds at 1000 requested pairs/s).
+12:45:36  PASS cycle-4-rate-1000: 7927 matched pairs; idle hold passed.
+12:45:36  Starting cycle-4-rate-2500 (8 seconds at 2500 requested pairs/s).
+12:45:49  PASS cycle-4-rate-2500: 18642 matched pairs; idle hold passed.
+12:45:49  Starting soak-2500 (1800 seconds at 2500 requested pairs/s).
+13:15:57  PASS soak-2500: 4188005 matched pairs; idle hold passed.
+13:15:57  All 12 functionality stages and the high-load soak passed.
+13:15:58  Final stopped state confirmed: PAUSED, pending=0.

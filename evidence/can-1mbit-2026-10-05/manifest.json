@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-05T12:06:41.1659728+08:00",
+  "nominal_bitrate": 1000000,
+  "mode": "Classic CAN, standard IDs, 8-byte data, normal mode",
+  "request_id": "0x601",
+  "response_id": "0x602",
+  "g474_elf_sha256": "4C01A37F511B737B21F71384CDA651E03503DB2330601CDF83B85E89847AB818",
+  "f303_elf_sha256": "FC7C06FED59769B7B40B605F9CA7A6924914253F7263374A0FBC84A2B7F484A5",
+  "g474": "NUCLEO-G474RE, HSI/PCLK1=16 MHz, 16 TQ, 75% sample point",
+  "f303": "NUCLEO-F303RE, HSI/PREDIV2/PLLx16=64 MHz, PCLK1=32 MHz, prescaler2, 16 TQ, 75% sample point",
+  "transceivers": "User CAN prototype boards; exact cable length and ambient temperature not measured",
+  "observed_termination": "Earlier user measurement approximately 60 ohms; not independently remeasured for this run",
+  "escs": "Disconnection requested; bench test sends no motor commands",
+  "g474_bin_sha256": "E27E7EEA58DE54E5888BC552F1F6DE0B7136054F2BB4C21C91297DE8625242CB",
+  "f303_bin_sha256": "0ACD2C2AD4172D83BB5F0D767B0931B2310313019251F745394E4FAB42251AA0"
+}

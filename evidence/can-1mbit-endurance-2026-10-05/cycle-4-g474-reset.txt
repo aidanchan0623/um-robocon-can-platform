@@ -1,0 +1,23 @@
+      -------------------------------------------------------------------
+                       STM32CubeProgrammer v2.23.0                  
+      -------------------------------------------------------------------
+
+ST-LINK FW  : V3J9M3
+Board       : NUCLEO-G474RE
+Voltage     : 3.30V
+SWD freq    : 1000 KHz
+Connect mode: Hot Plug
+Reset mode  : Software reset
+Device ID   : 0x469
+Revision ID : Rev X
+Device name : STM32G47x/G48x/G414
+NVM size    : 512 KBytes
+Device type : MCU
+Device CPU  : Cortex-M4
+BL Version  : 0xD5
+Debug in Low Power mode enabled
+
+
+MCU Reset
+
+Software reset is performed

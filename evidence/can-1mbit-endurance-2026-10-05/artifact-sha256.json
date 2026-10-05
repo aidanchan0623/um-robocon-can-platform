@@ -1,0 +1,467 @@
+[
+  {
+    "path": "baseline-firmware-identification.json",
+    "sha256": "1FC410A1DA12B828713582A905247A0FDFD1A967C0CE3104309AC422188B816E",
+    "bytes": 1039
+  },
+  {
+    "path": "cycle-1-g474-reset.txt",
+    "sha256": "0054D21FC6AD1C883CC5D56F672FA5583C53830300479CA42C1CC34C3808366D",
+    "bytes": 594
+  },
+  {
+    "path": "cycle-1-rate-100/live-progress.txt",
+    "sha256": "C2C2457BC43BA3B1836CD070C0E1853F2A4B184B73F8363C18CFD71159BCC779",
+    "bytes": 502
+  },
+  {
+    "path": "cycle-1-rate-100/stage-100-f303-after.txt",
+    "sha256": "35BE5BFB96D01BF933B837FDEC0785B9D308AC10F25BBCCF3A9D803421C49850",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-100/stage-100-f303-before.txt",
+    "sha256": "72D4055E8FC2E5FCDDCA5F972C2CBC20899069A46F4E91016650B3E5CB0DF756",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-100/stage-100-samples.csv",
+    "sha256": "CAEB113B532AFEAFB473864F61A5CF2304CC2B17783805B858508442C5EDF07B",
+    "bytes": 2422
+  },
+  {
+    "path": "cycle-1-rate-100/stage-100-serial.txt",
+    "sha256": "82CD054860D773A817097590E1F74FF16D317B51282603E4BB576AFA926A3E17",
+    "bytes": 4881
+  },
+  {
+    "path": "cycle-1-rate-100/stage-100.json",
+    "sha256": "5CF47339888C8050AE3D83CC78A86FD166B18EC762B44B95858D82DD76BE2550",
+    "bytes": 1904
+  },
+  {
+    "path": "cycle-1-rate-1000/live-progress.txt",
+    "sha256": "A347E2E3004B124AE83480AD7CAC3DAF2BD542CF608167B277C8C99E1AF0ECE9",
+    "bytes": 515
+  },
+  {
+    "path": "cycle-1-rate-1000/stage-1000-f303-after.txt",
+    "sha256": "192F18AA1D02920796C21F3B3E6EDD529F3A77064EE2F6CCB7A038D7A42E153A",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-1000/stage-1000-f303-before.txt",
+    "sha256": "A12263576A9EF8A2FE35A3E7BFC121929E59AA4F060BD23ED97216840A34F4ED",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-1000/stage-1000-samples.csv",
+    "sha256": "1F5A6E90793A8F176B58A78A2796A7DED6AC816655AE9E2FD3D927F2E1E55C89",
+    "bytes": 2490
+  },
+  {
+    "path": "cycle-1-rate-1000/stage-1000-serial.txt",
+    "sha256": "CB91A0A155D30859B529F61A8021195D8453EB175372D4FC7E910212F645CB31",
+    "bytes": 4949
+  },
+  {
+    "path": "cycle-1-rate-1000/stage-1000.json",
+    "sha256": "21480A2D2EAA6B599B6BDF22CD1E111749EDDA51D0A7E99DE5728828AEBCE13D",
+    "bytes": 1914
+  },
+  {
+    "path": "cycle-1-rate-2500/live-progress.txt",
+    "sha256": "EA11C24B7B250435DCF598F1330B6F786771C86097089805D54231C3C155AFB6",
+    "bytes": 521
+  },
+  {
+    "path": "cycle-1-rate-2500/stage-2500-f303-after.txt",
+    "sha256": "C0F3D2ACE02EBBCB145F2ACF2D7223BEAAA257BE21ED826B53A78DCEC7893F9C",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-2500/stage-2500-f303-before.txt",
+    "sha256": "D32563AF47E00BE3D875EE89EA97435F399A98D9028533845B2B0052CF90E21C",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-1-rate-2500/stage-2500-samples.csv",
+    "sha256": "F88D6950A4576D04B80569898D7C5B20868773D7C83EB47BA7DF2709B1116E50",
+    "bytes": 2523
+  },
+  {
+    "path": "cycle-1-rate-2500/stage-2500-serial.txt",
+    "sha256": "AD7A0D1F6BAB6CAA32FA144B9D60115231500B33666273BEC0810F1FFE96578E",
+    "bytes": 4982
+  },
+  {
+    "path": "cycle-1-rate-2500/stage-2500.json",
+    "sha256": "0BE5CF7D55554D01D850FDF98521EADB3BB7BA4B25AFEE021054E52CEBA338A7",
+    "bytes": 1921
+  },
+  {
+    "path": "cycle-2-g474-reset.txt",
+    "sha256": "0054D21FC6AD1C883CC5D56F672FA5583C53830300479CA42C1CC34C3808366D",
+    "bytes": 594
+  },
+  {
+    "path": "cycle-2-rate-100/live-progress.txt",
+    "sha256": "A6F39C0B032EB551A246934F59869D2A200ADB447EE6771AA249AB56B5B35278",
+    "bytes": 502
+  },
+  {
+    "path": "cycle-2-rate-100/stage-100-f303-after.txt",
+    "sha256": "B3782F3741D776D6D57AE670429CAF212DB309D454B58219202E85ECD8AD88F1",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-100/stage-100-f303-before.txt",
+    "sha256": "ED68A0B619399541FC23A501C669F69C023CE62E2373DA451093B8A3CA29FDC2",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-100/stage-100-samples.csv",
+    "sha256": "7B2AF7DFFD3C8A5F728D195F1C31025FDFD62C50EE07CF715F6C266FEEFD9AB2",
+    "bytes": 2422
+  },
+  {
+    "path": "cycle-2-rate-100/stage-100-serial.txt",
+    "sha256": "8C422189EF062D03C12E1CAA2BC8B8600915C5288E03321FFFF92CE764E9F38E",
+    "bytes": 4881
+  },
+  {
+    "path": "cycle-2-rate-100/stage-100.json",
+    "sha256": "B9AA1EA2DB219C617A3A19CA880CAE6C74C197BDA4F001F8B8BB6A328FC781DB",
+    "bytes": 1904
+  },
+  {
+    "path": "cycle-2-rate-1000/live-progress.txt",
+    "sha256": "ADD76CC5AAEEE648D1E111C4D9D1A61BFF406A739D68B704FB9CF8A8FF8B84F3",
+    "bytes": 515
+  },
+  {
+    "path": "cycle-2-rate-1000/stage-1000-f303-after.txt",
+    "sha256": "C3296B2FE1CA0813F6457ED4DEDD5A32B48BD54D32B37DDF9AE0101D2D98C3D4",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-1000/stage-1000-f303-before.txt",
+    "sha256": "BBDB30A9F89A5D75A10A75E8C9B29D1142B3D8E86D5F5B7E3B3F674418946DE3",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-1000/stage-1000-samples.csv",
+    "sha256": "999C8DD7299A6326F0CF96BFD68733FF02C8DCC317112E1D9813750BD8AE4EB1",
+    "bytes": 2490
+  },
+  {
+    "path": "cycle-2-rate-1000/stage-1000-serial.txt",
+    "sha256": "3DD7EDE3DD004FFAE61A54AD3606339808C0CFAE844E9ECD324BDE2BE7B8C36C",
+    "bytes": 4949
+  },
+  {
+    "path": "cycle-2-rate-1000/stage-1000.json",
+    "sha256": "FC68E204D040AF5A296BA7C3AE8C519BC1E02091A63F67E5327911F405997094",
+    "bytes": 1914
+  },
+  {
+    "path": "cycle-2-rate-2500/live-progress.txt",
+    "sha256": "405B2EBD003FC02A93C4EBFAC96FFF9BCD04E0EBFD8F8C0080BCEC47B2E98C93",
+    "bytes": 521
+  },
+  {
+    "path": "cycle-2-rate-2500/stage-2500-f303-after.txt",
+    "sha256": "865489783CA125E280C70A972BAD51BB35021EBF7BBA7829BC16C3B309FA639F",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-2500/stage-2500-f303-before.txt",
+    "sha256": "A525B6C02894387D6381AD99AA88FDB6E877739E55F1EDFA330E5BEE4D1C9934",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-2-rate-2500/stage-2500-samples.csv",
+    "sha256": "18B46E5152230EE4CBD7425352510E7A17065C6BB4DA618BBCF080024ADB3878",
+    "bytes": 2523
+  },
+  {
+    "path": "cycle-2-rate-2500/stage-2500-serial.txt",
+    "sha256": "28AB231AF85602381AA3883F11D1C80A3B1645BAA3C2AA96F50BF57462BC0A01",
+    "bytes": 4982
+  },
+  {
+    "path": "cycle-2-rate-2500/stage-2500.json",
+    "sha256": "7F4B0CBA9E3B261B0F394F06E3BBDBE8F7BDD25AF81476C46FE8A9ACC096B8F5",
+    "bytes": 1920
+  },
+  {
+    "path": "cycle-3-g474-reset.txt",
+    "sha256": "0054D21FC6AD1C883CC5D56F672FA5583C53830300479CA42C1CC34C3808366D",
+    "bytes": 594
+  },
+  {
+    "path": "cycle-3-rate-100/live-progress.txt",
+    "sha256": "8EE387276189D81ECFD7F88561868852DD1D8D17D8FDD42BC772C9F622F617FF",
+    "bytes": 502
+  },
+  {
+    "path": "cycle-3-rate-100/stage-100-f303-after.txt",
+    "sha256": "FCCCD42CF888073C09D9399AC22EE4694B7A0FE706966C4E24F282F6CF689439",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-100/stage-100-f303-before.txt",
+    "sha256": "9DE4723F0CE5B4CDAEE207DDB867B0FDDF52D80004DA89FA67C6F04AC0024494",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-100/stage-100-samples.csv",
+    "sha256": "9C68E55285DCC27D4B5E0F7061AD3EC2343FDCAB767B98CA64B53C3EB9C58F02",
+    "bytes": 2422
+  },
+  {
+    "path": "cycle-3-rate-100/stage-100-serial.txt",
+    "sha256": "38788077EC44361B8A33D67986BA92E737158804C61BF4E389AFC2B880E47039",
+    "bytes": 4881
+  },
+  {
+    "path": "cycle-3-rate-100/stage-100.json",
+    "sha256": "018511657C2990089F8D1F054F3F3713D0CFEE8222B9447F0E9DFF637B452D16",
+    "bytes": 1904
+  },
+  {
+    "path": "cycle-3-rate-1000/live-progress.txt",
+    "sha256": "D8ECD3B0103E59324DFEED210F74CDA8A394F46EC3C9D873CF25EECC72E75DBD",
+    "bytes": 515
+  },
+  {
+    "path": "cycle-3-rate-1000/stage-1000-f303-after.txt",
+    "sha256": "278C48F243B6FDD06FBDD6160D70A00A28E3243A74692EAB26E1E45A2A490981",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-1000/stage-1000-f303-before.txt",
+    "sha256": "029F603E41E90078175B0ABE47F15673D13BA0D5F2ED710E3C7FFCB880DA0FBA",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-1000/stage-1000-samples.csv",
+    "sha256": "25AF0D21C332808E24B9798CC0501346C46A1CC9E1AD1D40A92655C003260A24",
+    "bytes": 2490
+  },
+  {
+    "path": "cycle-3-rate-1000/stage-1000-serial.txt",
+    "sha256": "0858C6A06E3E0AD95983B78C3A26337411AD4120604C5ADC0ED04772C697508F",
+    "bytes": 4949
+  },
+  {
+    "path": "cycle-3-rate-1000/stage-1000.json",
+    "sha256": "443731F685BC183221CBC809F5350ACD9C4CEBD044288676B1005370D400C959",
+    "bytes": 1914
+  },
+  {
+    "path": "cycle-3-rate-2500/live-progress.txt",
+    "sha256": "C22C4183F68D935399CED621299DB2D7B20D27AD513C667F8FF611FBE692867F",
+    "bytes": 521
+  },
+  {
+    "path": "cycle-3-rate-2500/stage-2500-f303-after.txt",
+    "sha256": "A97602220EE90E82CF18B67B7BC2493255C4734E1FD1EB14F3CE739E58ECAA0F",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-2500/stage-2500-f303-before.txt",
+    "sha256": "5C0067A397823E2C010E9E333F1487E923592C3BE3B7F989983849212E6BCFAD",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-3-rate-2500/stage-2500-samples.csv",
+    "sha256": "08F21C0C47D9D3B29DF4CD053E4FCB3ACA8905C9EC74188B8F3A4B2E4111FF95",
+    "bytes": 2523
+  },
+  {
+    "path": "cycle-3-rate-2500/stage-2500-serial.txt",
+    "sha256": "FA26EF6388A8073ED71B162A5C0DB391E368850E88DF7CBA5BA1F8B34C9909C4",
+    "bytes": 4982
+  },
+  {
+    "path": "cycle-3-rate-2500/stage-2500.json",
+    "sha256": "6037E73478BFBE97DDA306913449584CFBE8854660543B996D3DBFFD2B2B7963",
+    "bytes": 1921
+  },
+  {
+    "path": "cycle-4-g474-reset.txt",
+    "sha256": "0054D21FC6AD1C883CC5D56F672FA5583C53830300479CA42C1CC34C3808366D",
+    "bytes": 594
+  },
+  {
+    "path": "cycle-4-rate-100/live-progress.txt",
+    "sha256": "3373BC725CE284F38F3CAE4E8E921EFD7ABF1582938191005C8BA217F6A913C8",
+    "bytes": 502
+  },
+  {
+    "path": "cycle-4-rate-100/stage-100-f303-after.txt",
+    "sha256": "E4C412E3DC8E0EBD67D18B60DBDE328E11C91B1EA7C47104C1CC3FC0026C5383",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-100/stage-100-f303-before.txt",
+    "sha256": "EF5845FA321BD135BA7F947C4581E995F59B6EC2C52B63F77E36EC40A2DB28A1",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-100/stage-100-samples.csv",
+    "sha256": "402D70DA1698639DDF85AC1BA157F7F7CD50B6B107051B2527AF763CA59FBC9F",
+    "bytes": 2422
+  },
+  {
+    "path": "cycle-4-rate-100/stage-100-serial.txt",
+    "sha256": "EE3D42247C9AF222895BA64CD482EACFD8B6B08EC0C568D505892406D6E2C599",
+    "bytes": 4881
+  },
+  {
+    "path": "cycle-4-rate-100/stage-100.json",
+    "sha256": "87C1A2299F2CD565AFA6306C8BC08ECF5E5E399944D3FD7E48BBB3D5FDC66304",
+    "bytes": 1905
+  },
+  {
+    "path": "cycle-4-rate-1000/live-progress.txt",
+    "sha256": "74DBC5B7CE91817FC85F14EE8834B49EC92D6CF8B7926856FF67671FE1AE08D6",
+    "bytes": 515
+  },
+  {
+    "path": "cycle-4-rate-1000/stage-1000-f303-after.txt",
+    "sha256": "1F7C9AF1F89D752EE41EB9349F1A0C7B1553323952F1A503A023195F9B062253",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-1000/stage-1000-f303-before.txt",
+    "sha256": "BBE17D522BEA990EFD7F4D32BC0D76E2C68727270DBCC34120CA847158E9429C",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-1000/stage-1000-samples.csv",
+    "sha256": "622567EFB9E3272A92BB29DFED5E5FE02995106BE6176C2EFBD27F35C0432CAD",
+    "bytes": 2490
+  },
+  {
+    "path": "cycle-4-rate-1000/stage-1000-serial.txt",
+    "sha256": "65DDEE8574C1A4D1FA572F0E8EDF84FE729897B8D4B14B570F2AE51DDFF69447",
+    "bytes": 4949
+  },
+  {
+    "path": "cycle-4-rate-1000/stage-1000.json",
+    "sha256": "B34D991AB2EF1A212F7F079AC64ADF34B3DB3F42336DD7F0A2CB6C50842167D8",
+    "bytes": 1914
+  },
+  {
+    "path": "cycle-4-rate-2500/live-progress.txt",
+    "sha256": "3BFDD65D0931AD0E8C173869C7AE69788D3C5B03646E01258D2AC27C63E005FE",
+    "bytes": 521
+  },
+  {
+    "path": "cycle-4-rate-2500/stage-2500-f303-after.txt",
+    "sha256": "57CBA54D3505236A58DD65259948FF7CA1FA9ADD22F8C9C99A3C10FF3D8DEF7B",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-2500/stage-2500-f303-before.txt",
+    "sha256": "A9262CD8E4697BD87E6D584B2A9094A4829870069AF0A75D5D152558DE53C522",
+    "bytes": 855
+  },
+  {
+    "path": "cycle-4-rate-2500/stage-2500-samples.csv",
+    "sha256": "85F61934EBDB933A9E8D3C2D9217D26D17A5DD4E91443FCF106DD7BF928F688F",
+    "bytes": 2523
+  },
+  {
+    "path": "cycle-4-rate-2500/stage-2500-serial.txt",
+    "sha256": "C5BD35EFBFFF2DE3A72DC758C718D1EB55676E21D7986B3F1C557BA41DF5E052",
+    "bytes": 4982
+  },
+  {
+    "path": "cycle-4-rate-2500/stage-2500.json",
+    "sha256": "2E34F936B475D8304DC8C8E6528B2FDB82D4A3047F837464DC148AAEC6D36F3F",
+    "bytes": 1921
+  },
+  {
+    "path": "extended-results-screenshot.jpg",
+    "sha256": "1E3551A2448DF56AAEDFC0D660057AEE829A23490C8C79D14616388406338AA1",
+    "bytes": 87816
+  },
+  {
+    "path": "Extended-Results.txt",
+    "sha256": "9BBDE328A434043B2EF7A9B853667ACD9A12CD9D30E3143667F6BC3AE2F325A5",
+    "bytes": 1246
+  },
+  {
+    "path": "final-pause-serial.txt",
+    "sha256": "DEA50B4F52F6CC311C5B8E81AB0733DB1A27D3C87B6DB78150AA1A749AE47D90",
+    "bytes": 310
+  },
+  {
+    "path": "live-progress.txt",
+    "sha256": "AC4C9456E8E94A63CDFB1E5C0FDBF4FD138C05E5E2CAB1C5FFAF16A471BA2047",
+    "bytes": 2420
+  },
+  {
+    "path": "README.md",
+    "sha256": "2FBFA5871EACD0E2DD984DE60C788E5F4F4AC8598142DE1851BF2AB7C119037B",
+    "bytes": 6049
+  },
+  {
+    "path": "soak-2500/live-progress.txt",
+    "sha256": "181A94F252B089071949C27C723EEC150BC2201E3C337AD8EBDC2B5B9A105AD4",
+    "bytes": 32489
+  },
+  {
+    "path": "soak-2500/stage-2500-f303-after.txt",
+    "sha256": "A97957B16BE073D0E9F18F0FB6C2E4BAEED67C9FED1FBA71469F388F2974B05F",
+    "bytes": 855
+  },
+  {
+    "path": "soak-2500/stage-2500-f303-before.txt",
+    "sha256": "F191662CE39206351D5AEE7418DEB79F7DC60ECC39BB5D9806ED65B04BCA83F6",
+    "bytes": 855
+  },
+  {
+    "path": "soak-2500/stage-2500-samples.csv",
+    "sha256": "5F8E0A59DB3E235EC305CFE954C2E508F0DBA7E006A0F1A4E3C64716CBD6B37F",
+    "bytes": 294989
+  },
+  {
+    "path": "soak-2500/stage-2500-serial.txt",
+    "sha256": "29B7B671A2825F1DC2F33EA336298D9ABAF8ED1ADCDCC36F8D200172726B300F",
+    "bytes": 619290
+  },
+  {
+    "path": "soak-2500/stage-2500.json",
+    "sha256": "97B0534438AC7A9BC7E5EAEF4F2F6BBC1CC981A2DD5E9B16B63087D132E41D24",
+    "bytes": 1941
+  },
+  {
+    "path": "suite.json",
+    "sha256": "5DEA68C90E0C405C162A05773DE4725FFD243349D30BB1BFB1AAF24662E35223",
+    "bytes": 5173
+  },
+  {
+    "path": "tools/run-link-test.ps1",
+    "sha256": "B1C16487205B7894C700EBB7DDF3CF6C50C7AA66E7FAADFD393375E3DB840E34",
+    "bytes": 10872
+  },
+  {
+    "path": "tools/run-lunch-suite.ps1",
+    "sha256": "353601D17DF6C48BABD2148A2C17409EAEF13F3AFAF62B5808D1EAE40410E6CC",
+    "bytes": 7621
+  },
+  {
+    "path": "tools/write-lunch-results.ps1",
+    "sha256": "E46E659483EEC961E1C163028047511AE7FF7EA83F5282FD8EFE4C6C46BA1459",
+    "bytes": 11723
+  },
+  {
+    "path": "verification-audit.json",
+    "sha256": "4ABD45397463FA71F1A33D196E1A5A86AD6E0DC144A9AC8F6E7FFF1659AFC630",
+    "bytes": 3883
+  }
+]

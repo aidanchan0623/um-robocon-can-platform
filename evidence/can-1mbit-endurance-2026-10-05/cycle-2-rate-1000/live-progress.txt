@@ -1,0 +1,6 @@
+12:43:55  Preparing 1000 pairs/s. Resetting only the F303; G474 remains paused.
+12:43:56  RUN 1000 pairs/s; checking all 8 echoed bytes, sequence, completion and error counters.
+12:43:56  1000 pairs/s: 0 echoes, bad=0, timeout=0, errors=0, TECmax=0, RECmax=0
+12:44:01  1000 pairs/s: 4,923 echoes, bad=0, timeout=0, errors=0, TECmax=0, RECmax=0
+12:44:08  Paused-idle hold 3s: counters unchanged=True
+12:44:08  PASS 1000 pairs/s: G474 queued/TX/echo=7928/7928/7928; F303 RX/TX=7928/7928; RTTmax=1615 us; late=1
