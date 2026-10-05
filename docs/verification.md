@@ -1,58 +1,96 @@
-# My tests and current limitations
+# Verification and current limits
 
-## Historical milestones
+The 1 Mbit/s results below exercised **two external Nucleo controllers through the custom transceiver boards**. The onboard STM32G431 was not the CAN controller under test. Its reported SWD recovery is documented separately and does not constitute an onboard CAN/PWM/encoder pass.
 
-Dates below are reconstructed from the CAN project discussion and the separate BLDC test records. They are test-history dates, not manufactured Git commit history.
+## 1 Mbit/s external-controller validation
 
-| Stage | Record / observation | Scope |
+On 5 October 2026, G474 sent eight-byte standard-ID `0x601` Classic CAN requests and F303 echoed them on `0x602`, in normal mode with automatic retransmission. Each request contained a big-endian sequence and a changing four-byte pattern. G474 validated every returned byte and matched the sequence to an outstanding request. Independent F303 RX/queued/TX counters were read over SWD after G474 paused and traffic drained.
+
+| Dataset | Completed stages | Verified request/echo pairs | Evidence |
+| --- | ---: | ---: | --- |
+| Initial integrity test | 3 | 1,033,396 | [Stage JSON, serial/CSV and SWD reads](../evidence/can-1mbit-2026-10-05/README.md) |
+| Extended functionality checks | 12 | 109,550 | [Four software-reset cycles at three rates](../evidence/can-1mbit-endurance-2026-10-05/README.md) |
+| Extended soak | 1 | 4,188,005 | [1,800.024-second stage](../evidence/can-1mbit-endurance-2026-10-05/soak-2500/stage-2500.json) |
+| **Total** | **16** | **5,330,951** | **10,661,902 delivered data frames** |
+
+All completed stages reconciled G474 queued/TX/validated-reply counts with independently read F303 RX/queued/TX counts, with zero pending traffic and zero recorded payload, unexpected-sequence, timeout, queue/FIFO, protocol or bus-off faults. Observed TEC/REC maxima were zero. The extended runner confirmed **PAUSED, pending=0 at 13:15:58 +08:00**; this is a recorded final state, not a current hardware reading.
+
+The publication audit repeats those checks against raw serial and SWD files:
+
+```powershell
+./tools/audit-can-evidence.ps1
+```
+
+This command is offline and does not reset or contact hardware. [Aggregate metadata](../evidence/can-validation-2026-10-05.json), [source/firmware provenance](firmware-provenance.md) and the [reproduction procedure](../evidence/can-1mbit-2026-10-05/REPRODUCTION.md) accompany the data.
+
+### Why these checks were used
+
+Zeros and ones in the pattern portion create runs that exercise CAN bit stuffing; alternating `0x55`/`0xAA` vary edge density. Sequence-derived and mixed patterns avoid relying on a single constant payload. The sequence/outstanding-request checks reject unknown or duplicate replies and expose missing replies through timeouts. Replies may arrive in any order within the 64-entry outstanding window: this firmware **does not assert strict receive ordering**. F303's independent counters corroborate delivery instead of relying only on the sender's accounting.
+
+These checks verify the completed application exchanges; the serial files contain periodic diagnostic reports, not one captured CAN record per frame.
+
+### Throughput, scheduling and latency
+
+The soak achieved approximately **2,326.62 pairs/s**, or **4,653.24 delivered data frames/s**, at the requested 2,500 pairs/s. Its **1,804 missed pacing intervals** are firmware scheduling misses, not lost CAN frames. All requests actually queued still matched completed transmissions and validated echoes. Exact 2,500-pair/s sustained scheduling was not demonstrated.
+
+Observed rates use the slope of validated-echo counts between host receipt timestamps of approximately once-per-second RUN reports. Serial buffering affects short-stage estimates, notably the 87.07-pair/s estimate in one 100-pair/s stage. Final integrity totals are reconciled separately.
+
+The maximum recorded application round trip was **1,724 µs**. G474 samples `DWT->CYCCNT` before enqueueing a request, then subtracts that sample when its polling loop validates the corresponding echo, dividing by the nominal 16 MHz CPU clock. This includes software, transmit queues, both frame transmissions and F303 processing. It is not a transceiver propagation-delay measurement, a motor response time, a latency distribution or an independently calibrated worst-case bound. See [the timing implementation](../evidence/can-1mbit-2026-10-05/firmware-overlays/g474-can-ping/Core/Src/can_link_test.c).
+
+### Derived bus-load estimate
+
+An unstuffed eight-byte standard data frame occupies 108 bits through EOF, or **111 bits including the three-bit intermission**. Using a conservative 111–135-bit-per-frame allowance for variable stuffing gives:
+
+```text
+estimated load = 2 × 2326.62 frames/s × assumed bits/frame / 1,000,000 bits/s
+               ≈ 51.65% to 62.82%
+```
+
+This is a derived estimate of successful-frame occupancy, not a measurement of utilisation or a claim about the exact maximum stuffed length. It excludes retransmissions/error/overload traffic and uses a host-estimated frame rate. Reference: [TI's CAN frame structure and stuffing overview](https://www.ti.com/lit/an/sloa101b/sloa101b.pdf).
+
+### Prominent limits
+
+- **Internal oscillators:** G474 used HSI at nominal 16 MHz; F303 used HSI/PLL with nominal PCLK1 at 32 MHz. Both used 16 time quanta, a 75% sample point and four-TQ SJW. Frequency error across temperature/voltage, cable propagation and transceiver delay were not qualified. Opposing clock errors compound, but an assumed ±1% per clock is not a measured error or a universal CAN tolerance limit. Allowable error depends on the timing and propagation budget; an HSE-based retest and a tolerance calculation remain future work. See [NXP AN1798, oscillator tolerance requirements](https://www.nxp.com/docs/en/application-note/AN1798.pdf).
+- **Physical layer:** no independent per-frame analyser capture or 1 Mbit/s CANH/CANL edge photograph is included. Existing scope photos show SWD. Cable length and ambient temperature were not measured; termination near 60 ohms was operator-reported earlier, not remeasured during this run.
+- **Coverage:** two nodes on a bench, no commanded motors, four ESCs, C620 application packets, cold power cycles, deliberate disconnections, temperature sweep, motor-switching noise or EMC testing. Software reset/start/stop checks are not cold starts or sequence-preserving resume.
+- **Accounting limits:** automatic retransmission was enabled; periodic status and sampled error maxima are not independent wire-level evidence that every analogue edge was ideal or that lifetime error probability is zero.
+
+### Preparation anomalies retained in the evidence
+
+The initial 100-pair/s serial file contains **one UART diagnostic error counter in two PAUSED reports before counter reset and RUN**. The cause was not established; RUN and final reports recorded zero UART errors. This is distinct from CAN controller errors, and the raw reports are retained.
+
+One host preflight before the 1,000-pair/s initial stage accepted buffered prior PAUSED reports. The host was corrected to confirm the intended rate and zero counters before sending RUN; the aborted preflight records are retained. The first extended runner launch had a host syntax error before hardware access, corrected before the successful launch. No hardware fault was retried or cleared during the completed suite.
+
+## Historical milestones and motor observations
+
+Dates are reconstructed from bench records rather than manufactured commit history. See [firmware provenance](firmware-provenance.md) for archived code identities and missing flash-time commit information.
+
+| Milestone | Observation | Scope |
 | --- | --- | --- |
-| 24 September 2026 | Programmer download-complete confirmation for custom STM32 work | Successful programming session, not full UART/CAN validation |
-| Late September | G431 USART3 tests and scope/adapter investigation | UART bring-up attempted; clean terminal decoding not established by the selected archive |
+| 24 September | Custom STM32 download-complete confirmation | One programming session, not full UART/CAN validation |
+| Late September | G431 USART3 scope/adapter investigation | Clean UART terminal decoding not established in the selected archive |
 | 27 September | G474 internal CAN loopback passed | Internal controller/configuration only |
-| 30 September | G474/F303 normal-mode CAN success reported in the project discussion | MCU-to-MCU bench demonstration; selected video pending |
-| Subsequent diagnosis | I traced pressure-sensitive TCAN3413 CAN lead solder contact and restored communication through rework | Physical assembly finding; does not resolve all separate SWD/UART issues |
-| 1 October | One BLDC controlled over CAN with keyboard requests | Single-controller unloaded bench demonstration |
-| 1 October | Replacement FS75100 ID 2 received alongside Mini ID 1 | Both feedback links approximately 50 Hz; see included telemetry |
-| 1 October | Two motors operated, with FS75100 startup tuning | Mixed-ESC unloaded bench demonstration, not locomotion |
+| 30 September | G474/F303 normal-mode CAN success reported | MCU-to-MCU bench demonstration |
+| Subsequent assembly diagnosis | Pressure-sensitive TCAN3413 contact repaired | External transceiver signal-path finding |
+| 1 October | One BLDC, then two BLDCs operated through G474 CAN | Unloaded motor demonstrations |
+| 5 October | 16 completed 1 Mbit/s stages above | External-MCU path only |
+| 5 October | G431 flash success reported after SWDIO repair | [Recovery evidence pending](../evidence/g431-swdio-2026-10-05/README.md) |
 
-## Evidence included
+The final two-motor setup used Mini 6.7 ID 1 and replacement FS75100 ID 2. A second Mini passed motor/Hall detection but did not appear on CAN after cable swaps/separate checks; its failure mechanism remains unestablished.
 
-- [dual-startup-checks.txt](../evidence/dual-startup-checks.txt): historical serial verification of the dual application with ESCs initially off. `test=42` covers synthetic/pure control and packet logic; missing-link arming, duplicate IDs and malformed requests were also exercised. This is not a powered two-motor test.
-- [dual-links-idle.txt](../evidence/dual-links-idle.txt): historical powered, disarmed check with both feedback links rising and reported `tec=0`, `bo=0`. Outputs are zero; this proves reception, not rotation.
-- [dual-motor-tuned.jsonl](../evidence/dual-motor-tuned.jsonl): historical keyboard/MCU feedback and separate ESC 2 USB snapshots during the tuned two-motor test. Serial counters, eRPM, state and timestamped samples are retained; private flash/probe identifiers are not included.
-- Firmware source and EasyEDA exports: current collected snapshots, not exact binary provenance for every earlier test.
-- [Media gallery](media-gallery.md): supplied bare-PCB and two-motor bench photographs, SWD debugging captures, a historical schematic image and a 20.8-second bench demonstration video. Supply dates do not establish recording dates or synchronisation with the telemetry logs.
+The [startup checks](../evidence/dual-startup-checks.txt) recorded 42 synthetic/pure logic checks, missing-link arming, duplicate IDs and malformed requests. The [powered idle log](../evidence/dual-links-idle.txt) recorded fresh approximately 50 Hz links and reported zero transmit errors while disarmed. The [tuned motor log](../evidence/dual-motor-tuned.jsonl) contains eight direction-request segments of at least 0.6 s reaching over 500 eRPM in the requested direction, with the session ending disarmed and stopped. These are sampled observations, not independently timed command-latency measurements.
 
-Decoded CAN traces and before/after annotated CAN solder-repair captures are pending. The included scope photographs are SWCLK/SWDIO, not proof of byte-perfect UART or CAN decoding.
+For motor 2, records describe changing battery regeneration allowance from 0 to −0.5 A, then speed PID P/I from 0.004/0.004 to 0.01/0.008 while retaining +5/−2 A motor and +2 A battery discharge limits. These are specific bench settings, not reusable calibration. Approximately 1950–2050 eRPM was observed for a 2000-eRPM request; shaft-speed accuracy, loaded torque, position accuracy and settling time were not calibrated.
 
-## Results and interpretation
+[Media](media-gallery.md) illustrate the setup; recording dates and synchronisation with telemetry are not established by supply filenames.
 
-I used Mini 6.7 ID 1 and FS75100 ID 2 for the final dual setup. A second Mini passed motor/Hall detection but did not appear on CAN, even after I swapped cables and checked it separately. Note: I have not established its fault mechanism; I replaced it for the successful dual test.
+## Remaining validation
 
-Motor 2 had intermittent starts. Historical records describe changing its battery regeneration allowance from 0 to −0.5 A, then speed PID P/I from 0.004/0.004 to 0.01/0.008 while retaining +5/−2 A motor and +2 A battery discharge limits. Settings were read back after restart. These are specific bench settings, not reusable calibration for other motors or robot loads.
+- G431 programmer verify log, exact flashed image/hash, UART output after reset, repaired-joint photograph and measured power-off continuity.
+- Onboard G431 CAN, PWM and encoder functionality.
+- 1 Mbit/s CANH/CANL edge capture, independent decoding, HSE-based timing and voltage/temperature tolerance.
+- Actual multi-node harness with motor noise, cold starts, communication loss and independent wheel commands.
+- Loaded low-speed control, four-wheel locomotion, slope/torque/thermal measurements and physical stop provisions.
+- Host-side packet/control tests and CI for parsing, byte order, limits, stale feedback, arming/reversal and malformed input.
 
-The tuned log contains eight direction-request segments lasting at least 0.6 s that reached over 500 eRPM in the requested direction. Note: I used snapshots and sampled feedback to observe the motor responses. I still need independently timed CAN captures to measure packet latency. The recorded test ended disarmed with both motors stopped.
-
-I observed roughly 1950–2050 eRPM after requesting 2000 eRPM on the bench. Note: I read that value from the controller’s electrical-speed feedback. I have not calibrated shaft-speed accuracy or measured loaded torque, position accuracy or settling time.
-
-## What I still need to validate
-
-- Precise payload verification through an independent CAN analyser or sequence-number stress test.
-- Continuous reliability, bit-error rate, worst-case latency, EMC or fault-injection coverage.
-- Actual endpoint resistor values on the final mixed-ESC bench arrangement.
-- Onboard G431 CAN operation or resolution of every G431 SWD/UART failure.
-- Functional validation of the board's PWM and encoder interfaces.
-- Four ESCs, independent wheel commands, loaded locomotion, slope climbing or 2.5 N·m wheel torque.
-- Safety certification, instant braking/reversal, or a physical emergency-stop implementation.
-
-## Repository preparation checks
-
-Five copied firmware snapshots are built offline using the supplied builder and STM32 GCC. Build results are recorded in [build-checks.md](../evidence/build-checks.md). No connected MCU, serial terminal, ESC configuration or motor operation is touched during this packaging work.
-
-Only the selected project files and team-supplied media are included. Generated firmware binaries, complete flash backups, private probe identifiers, unrelated project files and per-motor calibration backups are excluded. The demonstration video retains its original audio and includes the laptop control interface and background troubleshooting discussion; it is not a sanitised screen recording. Original source workspaces and supplied media are preserved.
-
-## My next software tests
-
-I plan to add a standalone automated test suite. My current evidence includes startup self-checks and successful offline builds, which cover a narrower scope.
-
-Planned coverage includes packet byte order and lengths, command parsing and limits, stale-feedback/host timeouts, arming and reversal states, and malformed input. Host-side tests can exercise pure logic without powering motors; independent CAN captures and sequence tests are still needed to verify the physical link. CI integration will follow when those tests are added.
+Five archived applications previously passed [offline builds](../evidence/build-checks.md). The 1 Mbit/s overlays were rebuilt offline for this publication and matched the tested binary hashes. Neither offline building nor archive preparation demonstrates new hardware operation. Licenses for the team's original material remain [unresolved](../THIRD_PARTY_NOTICES.md).

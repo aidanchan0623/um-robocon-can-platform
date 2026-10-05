@@ -54,5 +54,6 @@ Use the [27 September EasyEDA source exports](../hardware/source) and [hardware 
 
 - Close-ups of the assembled PCB and the repaired TCAN3413 lead-to-pad joints.
 - Annotated, repeatable CANH/CANL measurements before and after repair.
-- Independently decoded CAN frames and repeatable payload/sequence tests.
+- Independently decoded CAN frames and a 1 Mbit/s CANH/CANL edge capture; the separate [byte/sequence echo test](verification.md) is already recorded.
+- Repaired SWDIO joint photograph, measured continuity and a verified G431 UART capture after reset.
 - Loaded and multi-node testing before making robot-level performance claims.

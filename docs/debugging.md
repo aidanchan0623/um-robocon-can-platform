@@ -1,4 +1,8 @@
-# Debugging an intermittent CAN signal path
+# Hardware debugging case studies
+
+Two distinct lead-to-pad solder faults motivated the [assembly and bring-up checklist](assembly-checklist.md). The first restored external CAN communication; the second concerns programming access to the onboard G431. Evidence strength differs between the two cases.
+
+## Case 1: intermittent TCAN3413 CAN signal path
 
 ## Problem
 
@@ -47,4 +51,24 @@ A DMM reports an average of a switching signal; it cannot prove a UART/CAN bit s
 - Keep hardware, software and measurement-setting changes separate and record each result.
 - Preserve annotated captures and decoded frames, not just a photograph showing activity.
 
-Note: I am investigating the G431 UART and intermittent SWD programming difficulties separately. The CAN repair resolved the transceiver connection, but I have not established whether an MCU was damaged or whether these other faults share a cause.
+## Case 2: G431 SWDIO contact and programming access
+
+On 5 October, my custom G431 board failed to connect through ST-LINK while its previously flashed UART firmware could still execute. Changing connection/reset settings did not establish communication. A steady debug-line voltage was inconclusive: a meter cannot show a short SWD transaction.
+
+I captured SWCLK at the MCU pin during a connection attempt, observing clear switching and a displayed frequency near 96 kHz for the nominal 100 kHz setting. This located the programmer's clock at the measurement point, but it did not show that the MCU returned a valid SWD response.
+
+I subsequently found that the **SWDIO lead was not properly soldered**, addressed the connection and reported successful flashing. This strongly supports a physical SWDIO contact fault as the cause of this failure. It does not establish the cause of every earlier programming problem or permanent MCU damage.
+
+| Observation | Interpretation | Evidence status |
+| --- | --- | --- |
+| Existing UART firmware still ran | CPU could execute that image; debug connectivity remained unresolved | Operator observation |
+| SWCLK switched at the MCU pin | Clock reached that point; target response was not established | Supplied scope observation, no decoded transaction |
+| Inadequate SWDIO solder joint found | A physical fault existed on the bidirectional debug-data path | Operator diagnosis; joint photo pending |
+| Successful flash reported after repair | Programming access reportedly recovered | Verify log and exact image hash pending |
+| Approximately 33-ohm DIO-to-PA13 expectation | R5 is a 33-ohm series resistor in the reviewed schematic | Expected value; post-repair reading pending |
+
+The board was disconnected during this documentation update. I have not added a new programmer verify log, UART capture after reset, repair photograph or continuity measurement. The [recovery evidence register](../evidence/g431-swdio-2026-10-05/README.md) keeps those gaps explicit. Successful flashing alone also does not validate onboard CAN, PWM or encoder functions.
+
+### Process lesson
+
+Clock activity and running old firmware were useful clues, but neither verified the complete debug path. Check fine-pitch **lead-to-net continuity**, account for series resistors and repeat measurements without pressing on a questionable joint. Record both SWCLK and SWDIO paths, then save programmer verification and application output after repair. The earlier CAN solder fault and this SWDIO fault are separate findings that justify a repeatable assembly procedure.

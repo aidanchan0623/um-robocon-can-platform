@@ -51,7 +51,11 @@ I also included selectable split termination using two 62-ohm resistors and a 4.
 
 I demonstrated Classic CAN at **250 kbit/s** between a G474 and F303, followed by control of **two unloaded BLDC motors** through an external G474 and ESCs. I restored communication by reworking the pressure-sensitive solder contacts at the TCAN3413 leads.
 
+The separate [1 Mbit/s integrity and endurance tests](verification.md#1-mbits-external-controller-validation) later validated 5,330,951 eight-byte request/echo pairs through the external-controller transceiver path, including a 30-minute soak. The onboard G431 was not the CAN controller under test.
+
 **Note: my board still has limits.** I need to validate the onboard G431's CAN and local PWM/encoder functions, CAN FD, a larger loaded motor network and EMC. I also need a CANH/CANL capture with the bitrate and decoding recorded. The supplied scope photographs cover SWCLK/SWDIO during a separate investigation.
+
+Next-revision access should include labelled CANH/CANL/TXD/RXD and SWD test points with nearby grounds wherever v1 is difficult to probe. The [assembly checklist](assembly-checklist.md) records the required checks and remaining access improvements.
 
 ## Who did what
 

@@ -40,6 +40,8 @@ For an internal-loopback diagnostic on the G474 only, make a separate local test
 
 ## G431 UART snapshot
 
+The [5 October SWDIO repair](debugging.md#case-2-g431-swdio-contact-and-programming-access) has operator-reported flash success; its exact flashed image, verify log and UART capture are pending. The archived UART application below is not asserted to be that repaired board's current image.
+
 This snapshot sends `STM32 UART OK\r\n` through USART3 PC10 TX, **9600 baud, 8N1**, repeatedly with a 500 ms delay. PC11 is RX. Use a 3.3 V logic UART adapter RX connected to MCU TX and a shared ground. Do not connect an unverified adapter TX voltage or parallel adapter and board supplies.
 
 The physical UART header label is adapter-oriented; consult [hardware notes](../hardware/README.md), not just the word TX. An idle TX line should be high, with logic-level transitions during each burst. At 9600 baud a bit lasts about 104 µs; approximately 100 µs/div is useful for individual bits and 2–5 ms/div for the roughly 16 ms message. Use DC coupling, matched 10× probe settings, 1 V/div and a falling-edge trigger around 1.5 V. Ground the probe to a verified circuit ground. This describes expected behavior, not a claim that the historical UART terminal test was fully validated.

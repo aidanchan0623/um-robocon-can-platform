@@ -34,6 +34,8 @@ The UART header names use the adapter's perspective: header pin 2 (labelled RX /
 
 ## My validation limits
 
+Use the [assembly and bring-up checklist](../docs/assembly-checklist.md) to inspect every fine-pitch lead and record continuity, including the SWDIO path through R5. The [SWDIO incident](../docs/debugging.md#case-2-g431-swdio-contact-and-programming-access) has reported flash recovery, with post-repair measurement evidence pending.
+
 I checked the CAN net/pin mapping and demonstrated the external-controller path on the bench. Note: I still need to validate the onboard MCU path, PWM and encoder operation, EMC and loaded motor control. I have not measured controlled differential impedance or the signal-integrity effect of the remaining routing compromises. I established the CAN lead solder-contact fault through physical probing and rework.
 
 Design references: [TI TCAN3413 datasheet](https://www.ti.com/lit/ds/symlink/tcan3413.pdf) and [Nexperia PESD2CANFD27V-T datasheet](https://assets.nexperia.com/documents/data-sheet/PESD2CANFD27V-T.pdf). I also consulted the CMC's datasheet during placement. I omitted the choke in the documented bench arrangement, so I still need to evaluate it separately.
