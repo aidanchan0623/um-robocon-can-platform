@@ -1,0 +1,35 @@
+Offline source-snapshot tests rerun during local publication preparation on 10 October 2026.
+Python unittest with mocked hardware; no ST-LINK, CAN or motors accessed.
+Command: python -m unittest -v test_controller
+
+test_focus_loss_stops_and_disables (test_controller.KeyboardTests.test_focus_loss_stops_and_disables) ... ok
+test_keys_select_channels_with_tuned_duty (test_controller.KeyboardTests.test_keys_select_channels_with_tuned_duty) ... ok
+test_not_armed_disabled_stale_or_editing_never_runs (test_controller.KeyboardTests.test_not_armed_disabled_stale_or_editing_never_runs) ... ok
+test_opposite_keys_stop_and_disable (test_controller.KeyboardTests.test_opposite_keys_stop_and_disable) ... ok
+test_release_clears_pending_duty_and_sends_zero (test_controller.KeyboardTests.test_release_clears_pending_duty_and_sends_zero) ... ok
+test_repeat_does_not_queue_more_pwm (test_controller.KeyboardTests.test_repeat_does_not_queue_more_pwm) ... ok
+test_reversal_waits_for_confirmed_zero (test_controller.KeyboardTests.test_reversal_waits_for_confirmed_zero) ... ok
+test_command_limits (test_controller.ProtocolTests.test_command_limits) ... ok
+test_commit_written_last (test_controller.ProtocolTests.test_commit_written_last) ... ok
+test_decode_signed_position (test_controller.ProtocolTests.test_decode_signed_position) ... ok
+test_diagnostic_signature_guard (test_controller.ProtocolTests.test_diagnostic_signature_guard) ... ok
+test_diagnostics_collision_keeps_coherent_mailbox (test_controller.ProtocolTests.test_diagnostics_collision_keeps_coherent_mailbox) ... ok
+test_encoder_diagnostics_backward_compatible (test_controller.ProtocolTests.test_encoder_diagnostics_backward_compatible) ... ok
+test_fresh_telemetry_with_master_fault_not_labelled_stale (test_controller.ProtocolTests.test_fresh_telemetry_with_master_fault_not_labelled_stale) ... ok
+test_heartbeat_wrap (test_controller.ProtocolTests.test_heartbeat_wrap) ... ok
+test_persistent_snapshot_collision_still_fails (test_controller.ProtocolTests.test_persistent_snapshot_collision_still_fails) ... ok
+test_rejection_surfaced (test_controller.ProtocolTests.test_rejection_surfaced) ... ok
+test_seqlock_retry (test_controller.ProtocolTests.test_seqlock_retry) ... ok
+test_signed_positive_large_position (test_controller.ProtocolTests.test_signed_positive_large_position) ... ok
+test_snapshot_rejects_update_during_block (test_controller.ProtocolTests.test_snapshot_rejects_update_during_block) ... ok
+test_stale_diagnostics_disable_controls_even_with_fault_zero (test_controller.ProtocolTests.test_stale_diagnostics_disable_controls_even_with_fault_zero) ... ok
+test_stale_encoder_never_displayed_as_zero (test_controller.ProtocolTests.test_stale_encoder_never_displayed_as_zero) ... ok
+test_startup_lock_and_warning (test_controller.ProtocolTests.test_startup_lock_and_warning) ... ok
+test_tcl_fragmented_reply (test_controller.ProtocolTests.test_tcl_fragmented_reply) ... ok
+test_write_failure_not_hidden (test_controller.ProtocolTests.test_write_failure_not_hidden) ... ok
+test_wrong_firmware_rejected (test_controller.ProtocolTests.test_wrong_firmware_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.047s
+
+OK
