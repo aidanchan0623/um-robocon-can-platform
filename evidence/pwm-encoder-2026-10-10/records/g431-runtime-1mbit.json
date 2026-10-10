@@ -1,0 +1,49 @@
+{
+  "cpu_state": "running",
+  "bench": {
+    "tick": 64220,
+    "armed": 0,
+    "fault": 0,
+    "hz": 1000,
+    "pwm1": 0,
+    "pwm2": 0,
+    "raw": 65535,
+    "count": -1,
+    "cps": 0,
+    "a": 0,
+    "b": 0,
+    "ack": 2,
+    "result": 0,
+    "snapshot": 6422,
+    "encoder_diagnostics": true,
+    "encoder_config_ok": true,
+    "encoder_states_seen": 15,
+    "encoder_a_changes": 60,
+    "encoder_b_changes": 3
+  },
+  "registers": {
+    "0x40006418": "0x1040",
+    "0x4000641c": "0x6000a03",
+    "0x40006440": "0x0",
+    "0x40006444": "0x708"
+  },
+  "can_diagnostics": {
+    "magic": 1128353349,
+    "version": 1,
+    "snapshot": 0,
+    "first_error_tick": 0,
+    "first_psr": 0,
+    "first_ecr": 0,
+    "first_ir": 0,
+    "last_error_tick": 0,
+    "last_psr": 0,
+    "last_ecr": 0,
+    "last_ir": 0,
+    "error_observations": 0,
+    "fault_tick": 0,
+    "fault_psr": 0,
+    "fault_ecr": 0,
+    "fault_ir": 0
+  },
+  "tick_after": 64320
+}

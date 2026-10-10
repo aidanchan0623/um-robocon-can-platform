@@ -1,0 +1,102 @@
+{
+  "prepared_date": "2026-10-10",
+  "timezone": "Asia/Kuala_Lumpur",
+  "scope": "Original supplied media, copied diagnostic records and publication-time source snapshot. Not a flash-time or video firmware identity.",
+  "files": [
+    {
+      "path": "annotation-prompts.md",
+      "bytes": 4048,
+      "sha256": "7163A62ED93CC9D75602D8F3F25F2778670CBD1B85B75715E41C8F9FBFB168ED"
+    },
+    {
+      "path": "annotation-v2-prompt.md",
+      "bytes": 1852,
+      "sha256": "FAC64F41C61D7A7BBCF9AD13DA2A3071E0A451AA44CFBC7F93E9DFA9C1E71773"
+    },
+    {
+      "path": "bench-setup-annotated-v2.png",
+      "bytes": 1853270,
+      "sha256": "55F77A33AAA030A9B225E37DE8FEFE087E19BAA067181445BD9102C72553BCEF"
+    },
+    {
+      "path": "bench-setup-original.jpg",
+      "bytes": 117896,
+      "sha256": "AD3D41C2FDD12957D8FC7264566D9D879C7C8F1375A47C7CEECA9757D92257C9"
+    },
+    {
+      "path": "motor-encoder-demo-01-original.mp4",
+      "bytes": 4009540,
+      "sha256": "DAE009D11C5B318281A0DCD7A5835F7607B941FF1857CA665D173A22B9A2344B"
+    },
+    {
+      "path": "motor-encoder-demo-02-original.mp4",
+      "bytes": 2291606,
+      "sha256": "3314D1E4ED4CAD38BA901E855E6C3140200F4EB15732459F0A2F9CC810BD5426"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2696,
+      "sha256": "8B9C8760C3A3A289C36EC66DB810FB083BE65A5C9BFB0E0F8383E7E1A95D9BFD"
+    },
+    {
+      "path": "records/earlier-encoder-diagnostics.json",
+      "bytes": 32385,
+      "sha256": "D9B61D39BA04DACF05872F25F7643F7BF7015D0A1EBDD24AE526F9FBAE747617"
+    },
+    {
+      "path": "records/g431-runtime-1mbit.json",
+      "bytes": 989,
+      "sha256": "B560F1C566D57611BF0F54AF9F1E89EF2848B1DBDB63EAB1EF0634720B08937A"
+    },
+    {
+      "path": "records/paired-link-1mbit.json",
+      "bytes": 454236,
+      "sha256": "0280C19784A872CC499A5949C08DFAE6200E0207C54DD96CB11048696F938766"
+    },
+    {
+      "path": "records/stopped-link-1mbit.json",
+      "bytes": 3186,
+      "sha256": "5E316BAD806231398E1171A366425A841747790139D9D2AEEDED25F2252A6C42"
+    },
+    {
+      "path": "source-snapshot/controller.py",
+      "bytes": 31500,
+      "sha256": "C91D486EC2C3358F04A61129DBCDD5ACA6EEB683A567D5399303D08980FFF4E8"
+    },
+    {
+      "path": "source-snapshot/f303-can-master.c",
+      "bytes": 11831,
+      "sha256": "7459C52E6372D2B3B21C431F13FBFA49A9A341129AFE9BFFDC8C7A4E75B6C376"
+    },
+    {
+      "path": "source-snapshot/f303-g431-build-original.ps1",
+      "bytes": 4012,
+      "sha256": "A6A62824227F9002CE40D31AB86E0F4DF14E70E130F3E48C58C03075B13E462A"
+    },
+    {
+      "path": "source-snapshot/g431-main.c",
+      "bytes": 17340,
+      "sha256": "877C934CCABE830DF109EB586B4A101DC8E5626A0D615096590802A99F6B4452"
+    },
+    {
+      "path": "source-snapshot/g474-g431-pullup-build-original.ps1",
+      "bytes": 3882,
+      "sha256": "64154CBDA0F7F264B1EE151407331C1D70DEB8174CC1073837CE52B2D0DF748A"
+    },
+    {
+      "path": "source-snapshot/offline-test-results.txt",
+      "bytes": 3234,
+      "sha256": "5A483D129BA957C4A37B1B84E07B6301729730A87A8B4ECDDBD448061E3ABC7B"
+    },
+    {
+      "path": "source-snapshot/README.md",
+      "bytes": 2059,
+      "sha256": "CD6267CC20A3DFBB4F171F75277D13FB979A0D89B7BE71386BC76D6B47760B82"
+    },
+    {
+      "path": "source-snapshot/test_controller.py",
+      "bytes": 9714,
+      "sha256": "6D2BF108EC71754ECF8C15D9D28AFCF2F37E0188D24F2162AD64746B7084D575"
+    }
+  ]
+}
