@@ -1,6 +1,6 @@
 # Evidence
 
-The archive contains motor telemetry from 1 October and separate 1 Mbit/s CAN records from 5 October. No new hardware experiment was run while preparing this publication update. See [verification](../docs/verification.md) and [source provenance](../docs/firmware-provenance.md) for interpretation and limitations. Motor JSONL timestamps are UTC; firmware `ms` values are tick counts since MCU boot.
+The archive contains motor telemetry from 1 October, separate external-Nucleo 1 Mbit/s CAN records from 5 October, and an onboard G431 PWM/encoder milestone supplied on 10 October. No new hardware experiment was run while preparing this publication update. See [verification](../docs/verification.md), [source provenance](../docs/firmware-provenance.md) and the new milestone's source appendix for interpretation and limitations. Motor JSONL timestamps are UTC; firmware `ms` values are tick counts since MCU boot.
 
 | Evidence | Scope |
 | --- | --- |
@@ -8,6 +8,7 @@ The archive contains motor telemetry from 1 October and separate 1 Mbit/s CAN re
 | [Extended 1 Mbit/s suite](can-1mbit-endurance-2026-10-05/README.md) | Twelve functionality stages plus a 30-minute soak, raw records and runner |
 | [Aggregate result](can-validation-2026-10-05.json) | 5,330,951 pairs across both datasets; provenance and limits |
 | [G431 recovery register](g431-swdio-2026-10-05/README.md) | Operator-reported SWDIO repair/flash success; further evidence pending |
+| [10 October PWM/encoder milestone](pwm-encoder-2026-10-10/README.md) | Separate onboard G431 application: videos, short CAN checks, earlier encoder diagnostics, source appendix and 26 offline host tests |
 
 Run `./tools/audit-can-evidence.ps1` from the repository root to repeat the offline raw-record reconciliation. These results use external Nucleos; they do not validate the onboard G431 CAN path.
 

@@ -12,7 +12,15 @@ I added these photographs and the video on 2 October 2026. Original media bytes 
 
 <img src="../hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Bare CANDrive v1 PCB with labelled CAN, external MCU, PWM, encoder, UART and debug connections" width="650">
 
-This photograph shows our bare CANDrive v1 PCB and its labelled interfaces. Note: I still need assembled-board and solder-repair close-ups. PWM and encoder connections are part of the design; I have not validated those channels yet.
+This photograph shows our bare CANDrive v1 PCB and its labelled interfaces. Assembled-board and solder-repair close-ups remain useful follow-ups. Basic onboard PWM and bidirectional encoder feedback are now demonstrated in the separate 10 October milestone below; calibrated accuracy remains pending.
+
+## 10 October: CAN-driven PWM and encoder feedback
+
+![Annotated IG42 CANDrive bench](../evidence/pwm-encoder-2026-10-10/bench-setup-annotated-v2.png)
+
+The lower PCB is our CANDrive used as the F303's external CAN transceiver without a populated local MCU. The upper CANDrive's G431 controls the motor driver and acquires A/B encoder feedback. The coloured encoder bundle and MCU TX/RX versus CANH/CANL paths are labelled separately. This AI-assisted annotation is context, not a schematic; [original photo](../evidence/pwm-encoder-2026-10-10/bench-setup-original.jpg) and prompts are preserved.
+
+[Video 1](../evidence/pwm-encoder-2026-10-10/motor-encoder-demo-01-original.mp4) (about 26 s) · [Video 2](../evidence/pwm-encoder-2026-10-10/motor-encoder-demo-02-original.mp4) (about 15 s). These demonstrate keyboard motor control and signed encoder feedback, not PID, calibrated RPM or endurance. Original audio is retained. See [test scope and unresolved startup/calibration limits](pwm-encoder-bringup.md).
 
 ## Two-motor bench
 

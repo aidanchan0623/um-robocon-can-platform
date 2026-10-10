@@ -1,6 +1,12 @@
 # Verification and current limits
 
-The 1 Mbit/s results below exercised **two external Nucleo controllers through the custom transceiver boards**. The onboard STM32G431 was not the CAN controller under test. Its reported SWD recovery is documented separately and does not constitute an onboard CAN/PWM/encoder pass.
+The 5 October endurance results below exercised **two external Nucleo controllers through the custom transceiver boards**, not the onboard STM32G431. The separate [10 October onboard PWM/encoder milestone](pwm-encoder-bringup.md) now demonstrates F303/G431 CAN application operation, motor control and bidirectional encoder feedback. It does not extend the earlier endurance result to the onboard G431 or establish calibrated encoder accuracy.
+
+## 10 October: onboard G431 PWM and encoder bring-up
+
+The [milestone report](pwm-encoder-bringup.md) and [evidence archive](../evidence/pwm-encoder-2026-10-10/README.md) include the annotated setup, two original videos, short stopped-control CAN records, current source appendix and 26 passing offline host tests. The first video shows negative and positive counts/s with opposite motor commands and zero counts/s in stopped portions. Counts-per-revolution/RPM calibration and G431 operation without the current ST-LINK/reset workaround remain pending.
+
+The successful 35-second stopped-control worker recorded 288 samples, 27,010 additional RX frames and 1,687 complete snapshots with zero recorded worker faults/receive losses; it was not a powered motor or endurance test. A startup event and earlier poor encoder diagnostics remain disclosed. The later supplied videos are not time-synchronised with these saved diagnostic files.
 
 ## 1 Mbit/s external-controller validation
 
@@ -75,6 +81,7 @@ Dates are reconstructed from bench records rather than manufactured commit histo
 | 1 October | One BLDC, then two BLDCs operated through G474 CAN | Unloaded motor demonstrations |
 | 5 October | 16 completed 1 Mbit/s stages above | External-MCU path only |
 | 5 October | G431 flash success reported after SWDIO repair | [Recovery evidence pending](../evidence/g431-swdio-2026-10-05/README.md) |
+| 10 October | F303/G431 short CAN checks and supplied bidirectional IG42 PWM/encoder videos | [Onboard bring-up demonstrated; calibration/startup limits retained](pwm-encoder-bringup.md) |
 
 The final two-motor setup used Mini 6.7 ID 1 and replacement FS75100 ID 2. A second Mini passed motor/Hall detection but did not appear on CAN after cable swaps/separate checks; its failure mechanism remains unestablished.
 
@@ -87,10 +94,10 @@ For motor 2, records describe changing battery regeneration allowance from 0 to 
 ## Remaining validation
 
 - G431 programmer verify log, exact flashed image/hash, UART output after reset, repaired-joint photograph and measured power-off continuity.
-- Onboard G431 CAN, PWM and encoder functionality.
+- Calibrated onboard G431 encoder accuracy/high-speed limits and reliable cold starts without its debugger; basic CAN/PWM/bidirectional feedback is now demonstrated separately.
 - 1 Mbit/s CANH/CANL edge capture, independent decoding, HSE-based timing and voltage/temperature tolerance.
 - Actual multi-node harness with motor noise, cold starts, communication loss and independent wheel commands.
 - Loaded low-speed control, four-wheel locomotion, slope/torque/thermal measurements and physical stop provisions.
-- Host-side packet/control tests and CI for parsing, byte order, limits, stale feedback, arming/reversal and malformed input.
+- CI integration, firmware-level tests and expanded fault injection; 26 mocked PWM-panel host tests are now archived with the 10 October milestone.
 
 Five archived applications previously passed [offline builds](../evidence/build-checks.md). The 1 Mbit/s overlays were rebuilt offline for this publication and matched the tested binary hashes. Neither offline building nor archive preparation demonstrates new hardware operation. Licenses for the team's original material remain [unresolved](../THIRD_PARTY_NOTICES.md).

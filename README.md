@@ -4,7 +4,7 @@ An early **UM Robocon Team** control-board prototype combining an onboard MCU wi
 
 Two separate solder faults shaped our bring-up process: intermittent TCAN3413 CAN lead contact, and an inadequately soldered G431 SWDIO lead. I traced the paths with a multimeter and oscilloscope; the [case studies and assembly checklist](docs/debugging.md) distinguish measured results from reported recovery.
 
-**Test scope:** external Nucleos validated the custom transceiver path at 1 Mbit/s; **the onboard G431 was not the CAN controller under test**. Two unloaded BLDCs were demonstrated separately at 250 kbit/s. Onboard CAN/PWM/encoder operation, four-wheel locomotion, loaded performance and EMC remain unvalidated.
+**Test scope:** the earlier 1 Mbit/s endurance test used external Nucleos, **not the onboard G431**. On 10 October, a separate F303 → CAN → onboard G431 setup demonstrated bidirectional PWM control of an IG42 motor and live encoder feedback. Two unloaded BLDCs were demonstrated separately at 250 kbit/s. Calibrated encoder accuracy, debugger-free G431 startup, four-wheel locomotion, loaded performance and EMC remain unvalidated.
 
 <img src="hardware/images/photos/candrive-v1-bare-pcb.jpeg" alt="Unpopulated CANDrive v1 PCB held in hand" width="600">
 
@@ -99,10 +99,20 @@ Motor firmware starts disarmed. Key release requests **zero current and coast**,
 | Soak throughput / round trip | About **2,327 pairs/s**; **1.724 ms** max application RTT; **1,804 pacing misses** | Scheduling misses, not lost frames; derived bus load about **52–63%** |
 | Two-BLDC demonstration | Direction/speed requests, approximately 50 Hz feedback; 42 startup logic checks | Separate unloaded 250 kbit/s motor test |
 | G431 SWDIO recovery | Flash success reported after solder repair | Verify/UART/photo/continuity evidence pending |
+| Onboard G431 PWM + encoder | Bidirectional IG42 motor control with signed position/counts-per-second returned over CAN; [videos and test notes](docs/pwm-encoder-bringup.md) | Separate F303/G431 1 Mbit/s bench demonstration; not PID or calibrated RPM |
+| PWM-panel host tests | 26 offline tests passed; [source snapshot and output](evidence/pwm-encoder-2026-10-10/source-snapshot/README.md) | Mocked protocol/keyboard tests, not hardware qualification |
 
-See [verification](docs/verification.md) for methods, internal-oscillator risk and limits. CAN waveforms, onboard MCU functions, noisy multi-node testing and loaded locomotion remain future work.
+See [verification](docs/verification.md) for methods, internal-oscillator risk and limits. CAN waveforms, calibrated encoder measurements, independent G431 cold starts, noisy multi-node testing and loaded locomotion remain future work.
 
 ## Bench demonstration
+
+### New: onboard PWM and encoder feedback
+
+<a href="docs/pwm-encoder-bringup.md"><img src="evidence/pwm-encoder-2026-10-10/bench-setup-annotated-v2.png" alt="Annotated F303 to CANDrive G431 motor-control bench, including coloured encoder wires and a CANDrive external-transceiver board without a local MCU" width="850"></a>
+
+*Keyboard → F303 → CAN → G431 → PWM driver → IG42 motor, with encoder feedback returned to the PC.* [Video 1](evidence/pwm-encoder-2026-10-10/motor-encoder-demo-01-original.mp4) · [Video 2](evidence/pwm-encoder-2026-10-10/motor-encoder-demo-02-original.mp4) · [Methods, source snapshot and limits](docs/pwm-encoder-bringup.md). G431 currently uses a ST-LINK/connect/reset workaround; independent cold-start operation remains pending. The annotation is explanatory, not a wiring schematic.
+
+### Earlier: two-BLDC demonstration
 
 <a href="evidence/videos/bench-demo-supplied-2026-10-02.mp4"><img src="hardware/images/photos/dual-motor-bench.jpeg" alt="Two-motor bench setup with controllers, custom PCB and Nucleo" width="400"></a>
 
@@ -116,8 +126,11 @@ The [media gallery](docs/media-gallery.md) includes the PCB and bench photograph
 - [ ] Add assembled-board close-ups, solder-joint repair photos and decoded CAN captures.
 - [ ] Record repeatable power-off continuity tests after solder rework.
 - [ ] Measure termination on the final mixed-ESC bus.
-- [ ] Validate PWM and encoder channels on the assembled PCB.
-- [ ] Add host-side unit tests for packet encoding/decoding, command validation, timeouts and reversal logic, then automate them in CI.
+- [x] Demonstrate onboard G431 PWM and bidirectional encoder feedback through CAN.
+- [x] Add 26 offline PWM-panel protocol and keyboard-control tests with recorded results.
+- [ ] Calibrate encoder counts per output-shaft revolution and qualify speed/filter limits.
+- [ ] Resolve the G431 ST-LINK/reset dependency and verify independent cold starts.
+- [ ] Integrate the PWM application as a portable build and automate its host tests in CI; expand firmware-level and fault-injection coverage.
 - [ ] Run frame-sequence, command/feedback and disconnect tests with a CAN analyser.
 - [ ] Test four independently addressed ESCs before claiming four-wheel operation.
 - [ ] Validate wheel encoders, loaded low-speed control, thermal behavior and power distribution.
